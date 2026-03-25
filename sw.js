@@ -44,13 +44,18 @@ var urlsToCache = [
 	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v10.png',
 	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v13.png',
 	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v14.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-ti-qrcode.png',
+	'/mauricio-jun-ti/imgs/mauricio-jun-ti-qrcode.png'
 ];
-self.addEventListener('install', function(event) {
-	event.waitUntil(
+self.addEventListener('install', (event) => {
+	event.waitUntil( // Ensures the service worker doesn't finish installing until all files are cached
 		caches.open(CACHE_NAME)
-		.then(function(cache) {
-			return cache.addAll(urlsToCache);
+		.then((cache) => {
+			console.log('Opened cache');
+			return cache.addAll(urlsToCache); // Attempts to cache all resources in one go
+		})
+		.catch((error) => {
+			console.error('Failed to cache resources during install:', error);
+			// If any single request fails, the entire transaction is rolled back and the worker installation fails
 		})
 	);
 });
