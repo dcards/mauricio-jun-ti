@@ -934,6 +934,15 @@
 		`;
 
         const sectionsData = {
+            PG404: { 
+				title: "ERRO 404", 
+				subtitle: "Esta página não foi encontrada!", 
+				bg: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.png", 
+				text: `
+					<p><b>Volte para a página inicial.</b></p>
+					<p><a href="#" onclick="changeContent('INICIO')" alt="Clique aqui">Clique aqui</a></p>
+				` 
+			},
             INICIO: { 
 				title: "Introdução", 
 				subtitle: "Profissional de Tecnologia e Marketing Digital", 
@@ -1191,12 +1200,12 @@
 
         window.onload = () => {
 			preloadImages();
-			// Inicializa a primeira face com os dados de INICIO
+			// Inicializa a primeira face com os dados de PG404
             document.getElementById('content-front').innerHTML = `
-				<h2>${sectionsData.INICIO.title}</h2>
+				<h2>${sectionsData.PG404.title}</h2>
 				<article>
-					<h3>${sectionsData.INICIO.subtitle}</h3>
-					<p>${sectionsData.INICIO.text}</p>
+					<h3>${sectionsData.PG404.subtitle}</h3>
+					<p>${sectionsData.PG404.text}</p>
 					${socialMediaHTML} 
 				</article>
             `;
@@ -1204,8 +1213,8 @@
             document.getElementById('bg-front').style.backgroundImage = `url('${sectionsData.INICIO.bg}')`;
 
 			// Marca o ícone de início como ativo (se houver correspondência)
-            const initialLinks = document.querySelectorAll(`.nav-icons a[onclick*="'INICIO'"]`);
-            initialLinks.forEach(link => link.classList.add('nav-active'));
+            //const initialLinks = document.querySelectorAll(`.nav-icons a[onclick*="'INICIO'"]`);
+            //initialLinks.forEach(link => link.classList.add('nav-active'));
 
             showcopyleftyear();
         };

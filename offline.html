@@ -31,33 +31,33 @@
 	<meta property="og:url" content="https://dcards.github.io/mauricio-jun-ti/"/>
 	<meta property="og:title" content="Mauricio Jun TI - Cartão Digital"/>
 	<meta property="og:description" content="Profissional de projetos web e TI no Rio de Janeiro, especializado em desenvolvimento, SEO e soluções digitais acessíveis. Criação de sites, cartões digitais e presença online para autônomos e empresas."/>
-	<meta property="og:image" content="https://dcards.github.io/mauricio-jun-ti/imgs/logo-mauricio-jun-ti-cartao-digital-puro-v01-01.png"/>
+	<meta property="og:image" content="/imgs/logo-mauricio-jun-ti-cartao-digital-puro-v01-01.png"/>
 	
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image"/>
 	<meta property="twitter:url" content="https://dcards.github.io/mauricio-jun-ti/"/>
 	<meta property="twitter:title" content="Mauricio Jun TI - Cartão Digital"/>
 	<meta property="twitter:description" content="Profissional de projetos web e TI no Rio de Janeiro, especializado em desenvolvimento, SEO e soluções digitais acessíveis. Criação de sites, cartões digitais e presença online para autônomos e empresas."/>
-	<meta property="twitter:image" content="https://dcards.github.io/mauricio-jun-ti/imgs/logo-mauricio-jun-ti-cartao-digital-puro-v01-01.png"/>
+	<meta property="twitter:image" content="/imgs/logo-mauricio-jun-ti-cartao-digital-puro-v01-01.png"/>
 	
 	<meta name="keywords" content="Mauricio Jun, Mauricio Jun TI, projetos web, desenvolvimento web, criação de sites, SEO, otimização de sites, cartão digital, cartão de visita digital, presença digital, marketing digital, ferramentas gratuitas, Google Analytics, Google Tag Manager, WordPress, PWA, sites responsivos, autônomos, microempresas, pequenas empresas, TI, tecnologia da informação, web designer, front-end, gestão de projetos web, soluções digitais"/>
 	<meta name="robots" content="index, follow"/>
 	
-	<link rel="icon" href="https://dcards.github.io/mauricio-jun-ti/favicon/android-chrome-512x512.png" type="image/png" sizes="16x16"/>
+	<link rel="icon" href="/favicon/android-chrome-512x512.png" type="image/png" sizes="16x16"/>
 
-	<link rel="icon" type="image/png" href="https://dcards.github.io/mauricio-jun-ti/favicon/favicon-96x96.png" sizes="96x96" />
-	<link rel="icon" type="image/svg+xml" href="https://dcards.github.io/mauricio-jun-ti/favicon/favicon.svg" />
-	<link rel="shortcut icon" href="https://dcards.github.io/mauricio-jun-ti/favicon/favicon.ico" />
-	<link rel="apple-touch-icon" sizes="180x180" href="https://dcards.github.io/mauricio-jun-ti/favicon/apple-touch-icon.png" />
+	<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+	<link rel="shortcut icon" href="/favicon/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
 	<meta name="apple-mobile-web-app-title" content="MyWebSite" />
-	<link rel="manifest" href="https://dcards.github.io/mauricio-jun-ti/favicon/site.webmanifest" />
+	<link rel="manifest" href="/favicon/site.webmanifest" />
 
-	<link rel='stylesheet' type='text/css' href='https://dcards.github.io/mauricio-jun-ti/css/all.css'/>
-    <link rel='stylesheet' type='text/css' href='https://dcards.github.io/mauricio-jun-ti/css/brands.css'/>
-    <link rel='stylesheet' type='text/css' href='https://dcards.github.io/mauricio-jun-ti/css/fontawesome.css'/>
-    <link rel='stylesheet' type='text/css' href="https://dcards.github.io/mauricio-jun-ti/css/modal.css"/>
+	<link rel='stylesheet' type='text/css' href='/css/all.css'/>
+    <link rel='stylesheet' type='text/css' href='/css/brands.css'/>
+    <link rel='stylesheet' type='text/css' href='/css/fontawesome.css'/>
+    <link rel='stylesheet' type='text/css' href="/css/modal.css"/>
 
-	<link rel="manifest" href="https://dcards.github.io/mauricio-jun-ti/manifest-github.json"/>
+	<link rel="manifest" href="/manifest-github.json"/>
 
 	<link rel="stylesheet" href="//fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" media="all"/>
 
@@ -493,6 +493,233 @@
 		}
 
         /* Modal Add To */
+		.modal-open {
+  overflow: hidden;
+}
+
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+}
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 0.5rem;
+  pointer-events: none;
+}
+
+.modal.fade .modal-dialog {
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+  -webkit-transform: translate(0, -50px);
+  transform: translate(0, -50px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal.fade .modal-dialog {
+    transition: none;
+  }
+}
+
+.modal.show .modal-dialog {
+  -webkit-transform: none;
+  transform: none;
+}
+
+.modal.modal-static .modal-dialog {
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
+}
+
+.modal-dialog-scrollable {
+  display: -ms-flexbox;
+  display: flex;
+  max-height: calc(100% - 1rem);
+}
+
+.modal-dialog-scrollable .modal-content {
+  max-height: calc(100vh - 1rem);
+  overflow: hidden;
+}
+
+.modal-dialog-scrollable .modal-header,
+.modal-dialog-scrollable .modal-footer {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.modal-dialog-scrollable .modal-body {
+  overflow-y: auto;
+}
+
+.modal-dialog-centered {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: calc(100% - 1rem);
+}
+
+.modal-dialog-centered::before {
+  display: block;
+  height: calc(100vh - 1rem);
+  content: "";
+}
+
+.modal-dialog-centered.modal-dialog-scrollable {
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.modal-dialog-centered.modal-dialog-scrollable .modal-content {
+  max-height: none;
+}
+
+.modal-dialog-centered.modal-dialog-scrollable::before {
+  content: none;
+}
+
+.modal-content {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+}
+
+.modal-backdrop.fade {
+  opacity: 0;
+}
+
+.modal-backdrop.show {
+  opacity: 0.5;
+}
+
+.modal-header {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #dee2e6;
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
+}
+
+.modal-header .close {
+  padding: 1rem 1rem;
+  margin: -1rem -1rem -1rem auto;
+}
+
+.modal-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.modal-body {
+  position: relative;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+.modal-footer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 0.75rem;
+  border-top: 1px solid #dee2e6;
+  border-bottom-right-radius: calc(0.3rem - 1px);
+  border-bottom-left-radius: calc(0.3rem - 1px);
+}
+
+.modal-footer > * {
+  margin: 0.25rem;
+}
+
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+  .modal-dialog-scrollable {
+    max-height: calc(100% - 3.5rem);
+  }
+  .modal-dialog-scrollable .modal-content {
+    max-height: calc(100vh - 3.5rem);
+  }
+  .modal-dialog-centered {
+    min-height: calc(100% - 3.5rem);
+  }
+  .modal-dialog-centered::before {
+    height: calc(100vh - 3.5rem);
+  }
+  .modal-sm {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-lg,
+  .modal-xl {
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .modal-xl {
+    max-width: 1140px;
+  }
+}
 		/* The Modal (background) */
 		.modal {
 			display: none; /* Hidden by default */
@@ -769,12 +996,6 @@
     </style>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		
-	<script>
-		if (navigator.onLine === false) {
-			location.replace("/mauricio-jun-ti/offline.html");
-		}
-	</script>
 
 </head>
 <body>
@@ -791,7 +1012,7 @@
                 <div class="content-limit">
                     <header>
                         <div class="logo-link" onclick="changeContent('INICIO')">
-                            <img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-logo-horizontal-projetos-web-branco-02-negativo.png" alt="Logo">
+                            <img src="/imgs/mauricio-jun-logo-horizontal-projetos-web-branco-02-negativo.png" alt="Logo">
                         </div>
                     </header>
                     <main class="content-area">
@@ -801,11 +1022,11 @@
                     </main>
                     <aside class="sidebar">
                         <div class="circular-image">
-                            <img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v09.png" alt="Perfil" class="profile-pic" onclick="changeContent('INICIO')">
+                            <img src="/imgs/mauricio-jun-ti-v09.png" alt="Perfil" class="profile-pic" onclick="changeContent('INICIO')">
                         </div>
 						<div id="shareButtons" class="share-buttons-container share-buttons">
 							<div class="qrcode-wrapper">
-								<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-qrcode.png" alt="QRCode do site" class="qrcode-img">
+								<img src="/imgs/mauricio-jun-ti-qrcode.png" alt="QRCode do site" class="qrcode-img">
 								<span class="qrcode-legend">QRCode do site</span>
 							</div>
 							<ul class="share-menu">
@@ -832,7 +1053,7 @@
                 <div class="content-limit">
                     <header>
                         <div class="logo-link" onclick="changeContent('INICIO')">
-                            <img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-logo-horizontal-projetos-web-branco-02-negativo.png" alt="Logo">
+                            <img src="/imgs/mauricio-jun-logo-horizontal-projetos-web-branco-02-negativo.png" alt="Logo">
                         </div>
                     </header>
                     <main class="content-area">
@@ -842,11 +1063,11 @@
                     </main>
                     <aside class="sidebar">
                         <div class="circular-image">
-                            <img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v09.png" alt="Perfil" class="profile-pic" onclick="changeContent('INICIO')">
+                            <img src="/imgs/mauricio-jun-ti-v09.png" alt="Perfil" class="profile-pic" onclick="changeContent('INICIO')">
                         </div>
 						<div id="shareButtonsBackFace" class="share-buttons-container share-buttons">
 							<div class="qrcode-wrapper">
-								<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-qrcode.png" alt="QRCode do site" class="qrcode-img">
+								<img src="/imgs/mauricio-jun-ti-qrcode.png" alt="QRCode do site" class="qrcode-img">
 								<span class="qrcode-legend">QRCode do site</span>
 							</div>
 							<ul class="share-menu">
@@ -886,22 +1107,6 @@
     </nav>
 
 	<!-- The Modal -->
-	<div id="myModal" class="modal add-to">
-		<!-- Modal content -->
-		<div class="modal-content">
-			<div class="modal-header">
-				<h2>Para facilitar, você pode...</h2>
-				<span class="close">&times;</span>
-			</div>
-			<div class="modal-body">
-				<label class="fullscreenline">
-					<button class="add-to-btn">Adicionar à tela inicial</button>
-				</label>
-			</div>
-			<div class="modal-footer">
-			</div>
-		</div>
-	</div>
 
     <script>
         const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
@@ -937,7 +1142,7 @@
             INICIO: { 
 				title: "Introdução", 
 				subtitle: "Profissional de Tecnologia e Marketing Digital", 
-				bg: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.png", 
+				bg: "/imgs/mauricio-jun-ti-v05.png", 
 				text: `
 					<p>Mauricio Jun é um profissional com perfil multifacetado que une tecnologia e marketing digital, acumulando experiência prática em desenvolvimento web, análise de dados e estratégias de presença online. Sua trajetória inclui atuação em empresas como Golden Cross, Neki IT e Add Technologies, onde trabalhou com implementações em ColdFusion, gestão de conteúdo (CMS) e otimização para mecanismos de busca (SEO), sempre integrando soluções técnicas aos objetivos de negócio.</p>
 					<p>Ao longo dos anos, Mauricio consolidou um portfólio diversificado de projetos, atuando tanto de forma autônoma quanto em fábricas de software. Ele desenvolveu sites e cartões digitais em WordPress e HTML, implementou conceitos de web standards e SEO, além de utilizar ferramentas como Google Analytics e Google Tag Manager para monitoramento e otimização de resultados. Sua capacidade de transitar entre o desenvolvimento front-end, a automação de marketing (com HubSpot e Mautic) e a criação de conteúdo multimídia (edição de vídeos, e-mail marketing) demonstra uma visão integrada do ecossistema digital.</p>
@@ -947,9 +1152,9 @@
             SOBRE: { 
 				title: "Sobre", 
 				subtitle: "Transformando ideias em soluções digitais acessíveis", 
-				bg: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v04.png", 
+				bg: "/imgs/mauricio-jun-ti-v04.png", 
 				text: `
-					<p><img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-sobre-mobile.png" alt="Sobre" class="content-right-circular-image">Atuamos com design, desenvolvimento, manutenção e gestão de projetos Web e TI, oferecendo soluções completas para autônomos, micro e pequenas empresas, além de empreendedores em fase de crescimento. Nosso objetivo é simplificar o uso da tecnologia, transformando necessidades em soluções práticas, funcionais e acessíveis.</p>
+					<p><img src="/imgs/mauricio-jun-sobre-mobile.png" alt="Sobre" class="content-right-circular-image">Atuamos com design, desenvolvimento, manutenção e gestão de projetos Web e TI, oferecendo soluções completas para autônomos, micro e pequenas empresas, além de empreendedores em fase de crescimento. Nosso objetivo é simplificar o uso da tecnologia, transformando necessidades em soluções práticas, funcionais e acessíveis.</p>
 					<p>Nosso diferencial está na aplicação estratégica de ferramentas, produtos e serviços gratuitos — ou de baixo custo — disponíveis na internet, sempre com foco em qualidade e eficiência. Essa abordagem permite reduzir investimentos iniciais sem comprometer o desempenho, gerando um excelente custo-benefício no curto e médio prazo, especialmente para quem está estruturando ou expandindo seu negócio.</p>
 					<p>Embora muitos associem gratuidade à baixa qualidade, a realidade do mercado mostra o contrário. Grandes empresas como o Google oferecem soluções robustas, amplamente utilizadas no mundo todo. Além disso, diversas plataformas confiáveis disponibilizam versões gratuitas capazes de atender diferentes demandas com alto nível de entrega.</p>
 					<p>Vale destacar que essa estratégia não é universal. Cada projeto exige uma análise criteriosa para identificar as melhores ferramentas e garantir resultados consistentes. Se você busca uma forma inteligente de investir em tecnologia, com foco em economia e eficiência, vale a pena conhecer melhor essa proposta.</p>
@@ -959,9 +1164,9 @@
             DICAS: { 
 				title: "Dicas", 
 				subtitle: "Ferramentas gratuitas que todo empreendedor precisa conhecer", 
-				bg: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v13.png", 
+				bg: "/imgs/mauricio-jun-ti-v13.png", 
 				text: `
-					<p><img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-dicas-mobile.png" alt="Dicas" class="content-right-circular-image">Nesta seção, reunimos dicas práticas com foco em ferramentas, produtos e serviços gratuitos que podem impulsionar autônomos, micro e pequenos empreendedores. Hoje, já é possível estruturar uma presença digital profissional com baixo ou nenhum custo, utilizando soluções confiáveis e amplamente utilizadas no mercado.</p>
+					<p><img src="/imgs/mauricio-jun-dicas-mobile.png" alt="Dicas" class="content-right-circular-image">Nesta seção, reunimos dicas práticas com foco em ferramentas, produtos e serviços gratuitos que podem impulsionar autônomos, micro e pequenos empreendedores. Hoje, já é possível estruturar uma presença digital profissional com baixo ou nenhum custo, utilizando soluções confiáveis e amplamente utilizadas no mercado.</p>
 					<p>Plataformas como Google lideram esse cenário, oferecendo recursos robustos como Google Sites e Blogger para criação de sites e blogs, além de Google Analytics e Google Tag Manager para análise de desempenho. Outras ferramentas também se destacam, como Canva para criação de logotipos e peças visuais, WordPress (em sua versão gratuita) para gestão de conteúdo, e HubSpot CRM para organização de contatos e relacionamento com clientes.</p>
 					<p>Com essas soluções, é possível criar uma marca, desenvolver um site, gerenciar conteúdos, acompanhar resultados e até estruturar o relacionamento com clientes — tudo sem a necessidade de conhecimentos técnicos avançados ou grandes investimentos. Nos próximos conteúdos, vamos explorar essas ferramentas em detalhes e mostrar como aplicá-las de forma estratégica no seu negócio.</p>
 				`
@@ -969,9 +1174,9 @@
             NOVIDADES: { 
 				title: "Novidades", 
 				subtitle: "Cartão Digital inteligente para quem quer crescer", 
-				bg: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v08.png", 
+				bg: "/imgs/mauricio-jun-ti-v08.png", 
 				text: `
-					<p><img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-novidades-mobile.png" alt="Novidades" class="content-right-circular-image">O cartão de visita evoluiu — e hoje, o formato digital se destaca como uma solução mais prática, moderna e eficiente. O Cartão Digital vai além de um simples contato: é uma ferramenta interativa que centraliza suas informações profissionais e facilita conexões imediatas, permitindo ligações, mensagens, acesso a redes sociais e compartilhamento em poucos cliques.</p>
+					<p><img src="/imgs/mauricio-jun-novidades-mobile.png" alt="Novidades" class="content-right-circular-image">O cartão de visita evoluiu — e hoje, o formato digital se destaca como uma solução mais prática, moderna e eficiente. O Cartão Digital vai além de um simples contato: é uma ferramenta interativa que centraliza suas informações profissionais e facilita conexões imediatas, permitindo ligações, mensagens, acesso a redes sociais e compartilhamento em poucos cliques.</p>
 					<p>Além da praticidade, o Cartão Digital amplia seu alcance e fortalece sua presença online. Ele pode ser facilmente compartilhado por WhatsApp, e-mail, redes sociais ou até incorporado em sites, transformando cada contato em um potencial divulgador do seu negócio. Dependendo da solução, também pode funcionar como um mini aplicativo, com instalação no celular, acesso offline e até indexação em buscadores como o Google.</p>
 					<p><strong>Principais vantagens de investir em um Cartão Digital:</strong></p>
 					<ul class="content-list">
@@ -990,9 +1195,9 @@
             PORTFÓLIO: { 
 				title: "Portfólio", 
 				subtitle: "Projetos que geram presença e resultado", 
-				bg: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v03.png", 
+				bg: "/imgs/mauricio-jun-ti-v03.png", 
 				text: `
-					<p><img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-portfolio-mobile.png" alt="Portfólio" class="content-right-circular-image">O portfólio de Maurício Jun reúne projetos desenvolvidos para diferentes segmentos, com destaque para sites institucionais, cartões digitais, blogs e soluções web personalizadas. Entre os trabalhos, estão implementações em HTML, CSS, JavaScript e plataformas como WordPress, sempre com foco em responsividade, usabilidade e otimização para mecanismos de busca (SEO), garantindo melhor posicionamento e visibilidade online.</p>
+					<p><img src="/imgs/mauricio-jun-portfolio-mobile.png" alt="Portfólio" class="content-right-circular-image">O portfólio de Maurício Jun reúne projetos desenvolvidos para diferentes segmentos, com destaque para sites institucionais, cartões digitais, blogs e soluções web personalizadas. Entre os trabalhos, estão implementações em HTML, CSS, JavaScript e plataformas como WordPress, sempre com foco em responsividade, usabilidade e otimização para mecanismos de busca (SEO), garantindo melhor posicionamento e visibilidade online.</p>
 					<p>Ao longo de sua trajetória, atuou em empresas como <b>Golden Cross</b>, <b>Neki IT</b>, <b>Add Technologies</b>, <b>WTH</b> - <i>World Travel Holdings</i> e <b>RITS</b> - Rede de Informações para o Terceiro Setor, participando de projetos corporativos relevantes. Nessas experiências, desenvolveu atividades como criação e reestruturação de layouts, manutenção de aplicações web, integração de ferramentas e suporte a ambientes digitais, sempre alinhando tecnologia e estratégia.</p>
 					<p>O portfólio também contempla projetos autorais e freelancers, com soluções práticas e acessíveis voltadas para autônomos e pequenos negócios. Destacam-se iniciativas com cartões digitais interativos e aplicações modernas, reforçando uma abordagem orientada a resultados, presença digital e eficiência na entrega.</p>
 				`
@@ -1000,16 +1205,16 @@
             CLIENTES: { 
 				title: "Clientes", 
 				subtitle: "Clientes e parcerias", 
-				bg: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v14.png", 
+				bg: "/imgs/mauricio-jun-ti-v14.png", 
 				text: `
-					<p><img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-clientes-mobile.png" alt="Clientes" class="content-right-circular-image">Ao longo de sua trajetória, Maurício Jun colaborou com empresas de diferentes portes e segmentos, atendendo demandas tanto em ambientes corporativos quanto em projetos específicos. Entre os principais clientes e experiências, destacam-se atuações junto à <b>Golden Cross</b>, <b>Neki IT</b> e <b>Add Technologies</b>, onde participou de projetos voltados para internet, intranet, manutenção de sistemas e evolução de plataformas digitais.</p>
+					<p><img src="/imgs/mauricio-jun-clientes-mobile.png" alt="Clientes" class="content-right-circular-image">Ao longo de sua trajetória, Maurício Jun colaborou com empresas de diferentes portes e segmentos, atendendo demandas tanto em ambientes corporativos quanto em projetos específicos. Entre os principais clientes e experiências, destacam-se atuações junto à <b>Golden Cross</b>, <b>Neki IT</b> e <b>Add Technologies</b>, onde participou de projetos voltados para internet, intranet, manutenção de sistemas e evolução de plataformas digitais.</p>
 					<p>Além dessas, também integrou iniciativas na <b>WTH</b> - <i>World Travel Holdings</i> e na <b>RITS</b> - Rede de Informações para o Terceiro Setor, contribuindo com desenvolvimento web, programação visual e soluções digitais. Essa diversidade de clientes reflete sua capacidade de adaptação a diferentes contextos e necessidades, sempre com foco em eficiência, qualidade e entrega de valor.</p>
 				`
 			},
             LOCALIZAÇÃO: { 
 				title: "Localização", 
 				subtitle: "Presença local, atuação sem fronteiras", 
-				bg: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v10.png", 
+				bg: "/imgs/mauricio-jun-ti-v10.png", 
 				text: `
 					<p>Atuo presencialmente no estado do Rio de Janeiro, oferecendo suporte direto e acompanhamento próximo para projetos locais. Essa proximidade permite uma comunicação mais ágil e alinhada às necessidades específicas de cada cliente, garantindo eficiência na execução das soluções.</p>
 					<p>Além disso, também atendo projetos em todo o Brasil e no exterior de forma remota. Utilizando ferramentas de comunicação online, é possível conduzir todas as etapas — do planejamento à entrega — com praticidade, segurança e qualidade, independentemente da localização do cliente.<p>
@@ -1019,7 +1224,7 @@
 			CONTATOS: { 
 				title: "Contatos", 
 				subtitle: "Fale Conosco", 
-				bg: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v02.png", 
+				bg: "/imgs/mauricio-jun-ti-v02.png", 
 				text: `
 					<p>Escolha o canal de sua preferência para um atendimento imediato:</p>
 					<article class="contact-grid-wrapper">
@@ -1082,6 +1287,7 @@
             // Determina qual face atualizar (a que está escondida para girar)
             const targetSide = isFlipped ? 'front' : 'back';
 			document.getElementById(`content-${targetSide}`).innerHTML = `
+				<p style="color: #D6BA84; font-size: .7em;">Para utilizar todos os recursos, você precisa estar conectado à internet.</p>
 				<h2>${sectionsData[key].title}</h2>
 				<article>
 					<h3>${sectionsData[key].subtitle}</h3>
@@ -1193,6 +1399,7 @@
 			preloadImages();
 			// Inicializa a primeira face com os dados de INICIO
             document.getElementById('content-front').innerHTML = `
+				<p style="color: #D6BA84; font-size: .7em;">Para utilizar todos os recursos, você precisa estar conectado à internet.</p>
 				<h2>${sectionsData.INICIO.title}</h2>
 				<article>
 					<h3>${sectionsData.INICIO.subtitle}</h3>
@@ -1232,19 +1439,19 @@
 			}
 			document.getElementById(tabName).style.display = "block";
 			evt.currentTarget.className += " active";
-			sendToAnalytics02(tabName,'Abas acessadas','Card Page');
+			sendToAnalytics02(tabName,'Abas acessadas','Card Page - Offline');
 		}
 		
 		window.addEventListener("click", function(e) {
 			if (e.target.tagName.toLowerCase()==='a') {
 				if (e.target.title) {
-					sendToAnalytics02(e.target.title,'Ícones acessados','Card Page');
+					sendToAnalytics02(e.target.title,'Ícones acessados','Card Page - Offline');
 					console.log('Title = ' + e.target.title + ' | Tag Name = ' + e.target.tagName);
 				}
 			}
 			if (e.target.parentElement.tagName.toLowerCase()==='a') {
 				if (e.target.parentElement.title) {
-					sendToAnalytics02(e.target.parentElement.title,'Ícones acessados','Card Page');
+					sendToAnalytics02(e.target.parentElement.title,'Ícones acessados','Card Page - Offline');
 					console.log('Title = ' + e.target.parentElement.title + ' | Tag Name = ' + e.target.parentElement.tagName);
 				}
 			}
@@ -1277,11 +1484,11 @@
         document.querySelectorAll('.fullscreenline').forEach(fullscreenline => {
             if (isPwa()) {
                 fullscreenline.style.display = "none";
-                sendToAnalytics02('App','Dispositivos de acesso','Card Page - Dispositivos');
+                sendToAnalytics02('App','Dispositivos de acesso','Card Page - Offline - Dispositivos');
                 console.log('window fullscreen - ' + isPwa());
             } else {
                 fullscreenline.style.display = "block";
-                sendToAnalytics02('Web','Dispositivos de acesso','Card Page - Dispositivos');
+                sendToAnalytics02('Web','Dispositivos de acesso','Card Page - Offline - Dispositivos');
                 console.log('window screen - Web');
             }
             function isPwa() { 
@@ -1291,22 +1498,6 @@
                 );
             }
         });
-        
-		function getAddthisClicks() {
-			$( 'ul.share-menu li' ).on( 'click', 'a', function() {
-				if ($( this ).find('title').text()) {
-					var sendicontitle = $( this ).find('title').text();
-					sendToAnalytics02(sendicontitle,'Opções de compartilhamentos feitos','Card Page - Addthis');
-					console.log('Share Addthis clicado = ' + sendicontitle);
-				}
-			});
-		}
-		var checkAddthisExist = setInterval(function() {
-			if ($( 'ul.share-menu li' ).length) {
-				getAddthisClicks();
-				clearInterval(checkAddthisExist);
-			}
-		}, 100); // check every 100ms
 	</script>
     <script>
         /**
@@ -1324,23 +1515,23 @@
         }
 
         const imageUrlsWithPromises = [
-			'https://dcards.github.io/mauricio-jun-ti/imgs/logo-mauricio-jun-ti-cartao-digital-puro-v01-01.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-clientes-mobile.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-dicas-mobile.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-logo-horizontal-projetos-web-branco-02-negativo.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-novidades-mobile.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-portfolio-mobile.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-sobre-mobile.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v02.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v03.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v04.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v08.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v09.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v10.png',
-            'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v13.png',
-            'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v14.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-qrcode.png',
+			'/imgs/logo-mauricio-jun-ti-cartao-digital-puro-v01-01.png',
+			'/imgs/mauricio-jun-clientes-mobile.png',
+			'/imgs/mauricio-jun-dicas-mobile.png',
+			'/imgs/mauricio-jun-logo-horizontal-projetos-web-branco-02-negativo.png',
+			'/imgs/mauricio-jun-novidades-mobile.png',
+			'/imgs/mauricio-jun-portfolio-mobile.png',
+			'/imgs/mauricio-jun-sobre-mobile.png',
+			'/imgs/mauricio-jun-ti-v02.png',
+			'/imgs/mauricio-jun-ti-v03.png',
+			'/imgs/mauricio-jun-ti-v04.png',
+			'/imgs/mauricio-jun-ti-v05.png',
+			'/imgs/mauricio-jun-ti-v08.png',
+			'/imgs/mauricio-jun-ti-v09.png',
+			'/imgs/mauricio-jun-ti-v10.png',
+            '/imgs/mauricio-jun-ti-v13.png',
+            '/imgs/mauricio-jun-ti-v14.png',
+			'/imgs/mauricio-jun-ti-qrcode.png',
         ];
 
         // Use Promise.all to wait for all images to load
