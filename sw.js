@@ -5,7 +5,7 @@ var urlsToCache = [
 	'/mauricio-jun-ti/offline.html',
 	'/mauricio-jun-ti/404.html',
 	'/mauricio-jun-ti/favicon/android-chrome-512x512.png',
-	'/mauricio-jun-ti/favicon/android-icon-192x192.png',
+	'/mauricio-jun-ti/favicon/android-chrome-192x192.png',
 	'/mauricio-jun-ti/css/all.css',
     '/mauricio-jun-ti/css/brands.css',
     '/mauricio-jun-ti/css/fontawesome.css',
