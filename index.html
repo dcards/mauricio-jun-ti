@@ -196,6 +196,15 @@
             scrollbar-width: none;
             transform: translateZ(60px);
         }
+        .face-front .section-content {
+            overflow-y: auto;
+			/*background-color: pink;*/
+        }
+        .face-back .section-content {
+            overflow-y: auto;
+			/*background-color: cyan;*/
+        }
+
         .section-content::-webkit-scrollbar { display: none; }
 
         .text-wrapper {
@@ -347,8 +356,6 @@
 			mask-size: 100% 100%;
 			-webkit-mask-repeat: no-repeat;
 			mask-repeat: no-repeat;
-			background-color: red;
-			border: 1px solid red;
 		}
 
 		/* --- ESTILIZAÇÃO DO CONJUNTO SHARE + QRCODE --- */
@@ -671,6 +678,24 @@
 		main.content-area section.section-content p a {
 			color: var(--text-color);
 			text-decoration: underline;
+		}
+
+		/* Ajustes de empilhamento (Stacking Context) */
+		/* Quando o cartão NÃO está virado, a face de trás deve ignorar toques */
+		.card-container:not(.is-flipped) .face-back {
+			pointer-events: none;
+			/*visibility: hidden;*/ /* Reforço para o navegador ignorar a camada */
+		}
+		/* Quando o cartão ESTÁ virado, a face da frente deve ignorar toques */
+		.card-container.is-flipped .face-front {
+			pointer-events: none;
+			/*visibility: hidden;*/
+		}
+		/* Garante que a face visível sempre aceite toques */
+		.card-container:not(.is-flipped) .face-front,
+		.card-container.is-flipped .face-back {
+			pointer-events: auto;
+			/*visibility: visible;*/
 		}
 
         @media (min-width: 768px) {
