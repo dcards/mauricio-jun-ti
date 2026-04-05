@@ -812,64 +812,6 @@
 		}
     </style>
 	<style>
-		/* 2. BASE DO FUNDO - Modificada para Escala 1.0 */
-		#bg-front, #bg-back {
-			background-size: cover !important;
-			background-position: top center !important; 
-			background-repeat: no-repeat !important;
-			/*position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			*/
-			backface-visibility: hidden;
-			perspective: 1000px;
-			/* Inicia na escala original (sem zoom) */
-			transform: translate3d(0,0,0) scale(1); 
-			/* 'alternate' garante que ele vá do 0% ao 100% e volte ao 0% suavemente */
-			animation: cinematicLoop 20s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate !important;
-		}
-		@media (min-width: 1200px) {
-			/*
-			.content-limit, #bg-front, #bg-back {
-				width: 100dvw;
-				height: 100dvh;
-			}
-			*/
-			#bg-front, #bg-back {
-				perspective: none;
-				transform: none;
-				animation: none !important;
-			}
-		}
-		/* 3. MOVIMENTO CINEMATOGRÁFICO DE IDA E VOLTA */
-		@keyframes cinematicLoop {
-			0% {
-				/* Estado Original: Sem zoom, sem deslocamento */
-				transform: scale(1) translate(0, 0) rotate(0deg);
-			}
-			100% {
-				/* Ápice do Movimento: Leve zoom e deslocamento lateral */
-				/* Nota: scale(1.08) é um zoom sutil para não perder muita qualidade */
-				transform: scale(1.08) translate(-2%, -1%) rotate(0.5deg);
-			}
-		}
-		/* 4. OVERLAY (MANTIDO) */
-		.bg-layer::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			/*background: radial-gradient(circle at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%),
-						linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 40%, rgba(0,0,0,0.7) 100%);*/
-			pointer-events: none;
-			z-index: 1;
-		}
-	</style>
-	<style>
 		/* --- VERSÃO LIGHT/TRANSPARENT DO TOOLTIP --- */
 		
 		.profile-area {
@@ -1015,6 +957,56 @@
 				right: 2.4em;
 			}
 		}
+	</style>
+	<style>
+/* --- ENGINE DE CENA ESPACIAL (ROTAÇÃO E PERSPECTIVA) --- */
+:root {
+    --gyro-rot-x: 0deg;
+    --gyro-rot-y: 0deg;
+}
+
+.bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    /* Define a profundidade do efeito 3D sem afetar outros elementos */
+    /*perspective: 1000px; */
+}
+
+.bg-layer::before {
+    content: "";
+    position: absolute;
+    /* Aumentamos a área da imagem para evitar frestas na rotação */
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background-image: inherit;
+    background-size: cover;
+    background-position: top center;
+    
+    /* Eixo de rotação centralizado */
+    transform-origin: center center;
+    
+    /* Aplica a rotação baseada nas variáveis do JS */
+    /* scale(1.6) é o "seguro" para não mostrar fundo branco */
+    transform: scale(1.1) 
+               rotateX(var(--gyro-rot-x)) 
+               rotateY(var(--gyro-rot-y));
+    
+    /* Transição suave para evitar trepidação do sensor */
+    transition: transform 0.4s cubic-bezier(0.1, 0.3, 0.2, 1);
+    will-change: transform;
+}
+
+/* Mantém o contexto 3D para elementos que usam translateZ */
+.face-front, .face-back {
+    transform-style: preserve-3d !important;
+}
 	</style>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -1222,7 +1214,7 @@
             INICIO: { 
 				title: "Introdução", 
 				subtitle: "Profissional de Tecnologia e Marketing Digital", 
-				bg: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.png", 
+				bg: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.gif", 
 				text: `
 					<p>Mauricio Jun é um profissional com perfil multifacetado que une tecnologia e marketing digital, acumulando experiência prática em desenvolvimento web, análise de dados e estratégias de presença online. Sua trajetória inclui atuação em empresas como Golden Cross, Neki IT e Add Technologies, onde trabalhou com implementações em ColdFusion, gestão de conteúdo (CMS) e otimização para mecanismos de busca (SEO), sempre integrando soluções técnicas aos objetivos de negócio.</p>
 					<p>Ao longo dos anos, Mauricio consolidou um portfólio diversificado de projetos, atuando tanto de forma autônoma quanto em fábricas de software. Ele desenvolveu sites e cartões digitais em WordPress e HTML, implementou conceitos de web standards e SEO, além de utilizar ferramentas como Google Analytics e Google Tag Manager para monitoramento e otimização de resultados. Sua capacidade de transitar entre o desenvolvimento front-end, a automação de marketing (com HubSpot e Mautic) e a criação de conteúdo multimídia (edição de vídeos, e-mail marketing) demonstra uma visão integrada do ecossistema digital.</p>
@@ -1619,7 +1611,7 @@
 			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v02.png',
 			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v03.png',
 			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v04.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.png',
+			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.gif',
 			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v08.png',
 			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v09.png',
 			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v10.png',
@@ -1730,6 +1722,118 @@
 			// Gatilho inicial ao carregar o site (Opcional, atraso elegante)
 			setTimeout(handleTooltipToggle, 1800);
 		});
+	</script>
+	<script>
+/* --- CONTROLADOR DE GIRO ESPACIAL --- */
+(function() {
+    const root = document.documentElement;
+    let gyroActive = false;
+
+    function updateSpatialRotation(e) {
+
+        let beta = e.beta;   // Frente/Trás
+        let gamma = e.gamma; // Esquerda/Direita
+
+        if (beta === null || gamma === null) return;
+
+        // -------------------------
+        // 🎚️ EIXO Y (LATERAL) — CORRIGIDO
+        // -------------------------
+
+        // gamma principal
+        let g = gamma;
+
+        // 🔥 compensação quando gamma perde sensibilidade
+        // quanto mais perto de 0 ou 180 no beta, menos confiável o gamma
+        let betaInfluence = Math.sin((beta * Math.PI) / 180);
+
+        // mistura inteligente
+        g = g * Math.abs(betaInfluence);
+
+        // fallback: se gamma estiver morto, usa parte do beta
+        if (Math.abs(gamma) < 0.1) {
+            g += (beta - 90) * 0.3;
+        }
+
+        // clamp final
+        g = Math.max(-60, Math.min(60, g));
+
+
+        // -------------------------
+        // 🎚️ EIXO X (VERTICAL)
+        // -------------------------
+
+        let b;
+
+        if (beta >= 30 && beta <= 150) {
+            b = beta - 90; // centraliza
+        } else {
+            // mantém continuidade fora da faixa
+            b = (beta > 150) ? 60 : -60;
+        }
+
+        b = Math.max(-60, Math.min(60, b));
+
+
+        // -------------------------
+        // 🧹 ZONA MORTA
+        // -------------------------
+
+        if (Math.abs(g) < 0.2) g = 0;
+        if (Math.abs(b) < 0.2) b = 0;
+
+
+        // -------------------------
+        // 🎯 ROTAÇÃO FINAL
+        // -------------------------
+
+        let finalRotY = -g * 0.7;
+        let finalRotX = -b * 0.7;
+
+
+        // -------------------------
+        // 🎨 CSS (INDEPENDENTE)
+        // -------------------------
+
+        root.style.setProperty('--gyro-rot-x', `${finalRotX.toFixed(2)}deg`);
+        root.style.setProperty('--gyro-rot-y', `${finalRotY.toFixed(2)}deg`);
+
+
+        // DEBUG
+        console.log({
+            beta,
+            gamma,
+            g,
+            b,
+            finalRotX,
+            finalRotY
+        });
+    }
+
+    async function startGyro() {
+        if (gyroActive) return;
+
+        try {
+            if (
+                typeof DeviceOrientationEvent !== 'undefined' &&
+                typeof DeviceOrientationEvent.requestPermission === 'function'
+            ) {
+                const permission = await DeviceOrientationEvent.requestPermission();
+                if (permission !== 'granted') return;
+            }
+
+            window.addEventListener('deviceorientation', updateSpatialRotation);
+            gyroActive = true;
+
+        } catch (err) {
+            console.warn("Acesso ao giroscópio negado.", err);
+        }
+    }
+
+    document.addEventListener('click', startGyro, { once: true });
+    document.addEventListener('touchstart', startGyro, { once: true });
+
+})();
 	</script>
 </body>
 </html>

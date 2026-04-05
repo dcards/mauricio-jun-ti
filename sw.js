@@ -35,7 +35,7 @@ var urlsToCache = [
 	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v02.png',
 	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v03.png',
 	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v04.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.png',
+	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.gif',
 	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v08.png',
 	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v09.png',
 	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v10.png',
