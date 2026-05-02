@@ -1,5 +1,6 @@
 var CACHE_NAME = 'dcard-mauricio-jun-ti-v01-01';
 var urlsToCache = [
+	/*
 	'/mauricio-jun-ti/',
 	'/mauricio-jun-ti/index.html',
 	'/mauricio-jun-ti/offline.html',
@@ -42,6 +43,50 @@ var urlsToCache = [
 	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v13.png',
 	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v14.png',
 	'/mauricio-jun-ti/imgs/mauricio-jun-ti-qrcode.png'
+	*/
+	'./',
+	'./index.html',
+	'./offline.html',
+	'./404.html',
+	'./favicon/android-chrome-512x512.png',
+	'./favicon/android-chrome-192x192.png',
+	'./css/all.css',
+    './css/brands.css',
+    './css/fontawesome.css',
+    './css/modal.css',
+	'./webfonts/fa-brands-400.eot',
+	'./webfonts/fa-brands-400.svg',
+	'./webfonts/fa-brands-400.ttf',
+	'./webfonts/fa-brands-400.woff',
+	'./webfonts/fa-brands-400.woff2',
+	'./webfonts/fa-regular-400.eot',
+	'./webfonts/fa-regular-400.svg',
+	'./webfonts/fa-regular-400.ttf',
+	'./webfonts/fa-regular-400.woff',
+	'./webfonts/fa-regular-400.woff2',
+	'./webfonts/fa-solid-900.eot',
+	'./webfonts/fa-solid-900.svg',
+	'./webfonts/fa-solid-900.ttf',
+	'./webfonts/fa-solid-900.woff',
+	'./webfonts/fa-solid-900.woff2',
+	'./imgs/logo-mauricio-jun-ti-cartao-digital-puro-v01-01.png',
+	'./imgs/mauricio-jun-clientes-mobile.png',
+	'./imgs/mauricio-jun-dicas-mobile.png',
+	'./imgs/mauricio-jun-logo-horizontal-projetos-web-branco-02-negativo.png',
+	'./imgs/mauricio-jun-novidades-mobile.png',
+	'./imgs/mauricio-jun-portfolio-mobile.png',
+	'./imgs/mauricio-jun-sobre-mobile.png',
+	'./imgs/mauricio-jun-ti-v02.png',
+	'./imgs/mauricio-jun-ti-v03.png',
+	'./imgs/mauricio-jun-ti-v04.png',
+	'./imgs/mauricio-jun-ti-v05.gif',
+	'./imgs/mauricio-jun-ti-v08.png',
+	'./imgs/mauricio-jun-ti-v09.png',
+	'./imgs/mauricio-jun-ti-v10.png',
+	'./imgs/mauricio-jun-ti-v13.png',
+	'./imgs/mauricio-jun-ti-v14.png',
+	'./imgs/mauricio-jun-ti-v20.png',
+	'./imgs/mauricio-jun-ti-qrcode.png'
 ];
 self.addEventListener('install', (event) => {
 	event.waitUntil( // Ensures the service worker doesn't finish installing until all files are cached

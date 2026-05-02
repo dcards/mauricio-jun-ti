@@ -1,6 +1,6 @@
 {
   "short_name": "Mauricio Jun TI - App",
-  "name": "Mauricio Jun TI - Cartão Digital",
+  "name": "Mauricio Jun TI - Cartão de Visita Digital Premium",
   "icons": [
     {
       "src": "https://dcards.github.io/mauricio-jun-ti/favicon/android-chrome-192x192.png",
@@ -13,6 +13,7 @@
       "sizes": "512x512"
     }
   ],
+  /*"start_url": "index.html",*/
   "start_url": "https://dcards.github.io/mauricio-jun-ti/?utm_source=pwa",
   "background_color": "#000",
   "display": "standalone",
