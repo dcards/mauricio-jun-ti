@@ -86,6 +86,8 @@ var urlsToCache = [
 	'./imgs/mauricio-jun-ti-v13.png',
 	'./imgs/mauricio-jun-ti-v14.png',
 	'./imgs/mauricio-jun-ti-v20.png',
+	'./imgs/mauricio-jun-ti-e-logo-v08.png',
+	'./imgs/mauricio-jun-ti-clientes-v13.png',
 	'./imgs/mauricio-jun-ti-qrcode.png'
 ];
 self.addEventListener('install', (event) => {

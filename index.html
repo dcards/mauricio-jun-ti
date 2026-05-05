@@ -1217,6 +1217,165 @@
 			*/
 		}
 	</style>
+	<style>
+		.mj-carousel-container {
+			position: relative;
+			width: 100%;
+			margin: 20px 0;
+			overflow: visible;
+			/* Importante para o swipe mobile funcionar sem conflitos */
+			touch-action: pan-y; 
+		}
+
+		.mj-carousel-viewport {
+			overflow: hidden;
+			width: 100%;
+			border-radius: 12px;
+		}
+
+		.mj-carousel-track {
+			display: flex;
+			transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+			will-change: transform;
+		}
+
+		/* Padronização das imagens: 80% da largura para mostrar a próxima imagem */
+		.mj-carousel-item {
+			min-width: 80%; 
+			padding: 0 8px;
+			box-sizing: border-box;
+		}
+
+		.mj-image-wrapper {
+			position: relative;
+			width: 100%;
+			height: 220px; /* Altura fixa padronizada */
+			overflow: hidden;
+			border-radius: 10px;
+			background: #1a1a1a;
+			cursor: pointer;
+		}
+
+		.mj-carousel-img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover; /* Recorta a imagem para preencher o espaço mantendo o centro */
+		}
+
+		.mj-carousel-caption {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			padding: 20px 10px 10px;
+			background: linear-gradient(transparent, rgba(0,0,0,0.8));
+			color: #fff;
+			font-size: 0.9rem;
+			text-align: center;
+		}
+
+		/* Navegação */
+		.mj-carousel-nav {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background: white;
+			border: none;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+			cursor: pointer;
+			z-index: 10;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 18px;
+		}
+		.mj-prev { left: -15px; }
+		.mj-next { right: -15px; }
+
+		/* Bolinhas */
+		.mj-carousel-dots {
+			display: flex;
+			justify-content: center;
+			margin-top: 15px;
+			gap: 10px;
+		}
+		.mj-dot {
+			width: 10px;
+			height: 10px;
+			background: #ccc;
+			border-radius: 50%;
+			cursor: pointer;
+			transition: all 0.3s;
+		}
+		.mj-dot.mj-dot-active {
+			background: #333;
+			transform: scale(1.3);
+		}
+
+		/* Lightbox (Mesma lógica) */
+		.mj-lb {
+			position: fixed;
+			top: 0; left: 0;
+			width: 100%; height: 100%;
+			background: rgba(0,0,0,0.9);
+			display: none;
+			z-index: 99999;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.mj-lb-img { max-width: 90%; max-height: 80%; object-fit: contain; }
+		.mj-lb-close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 40px; cursor: pointer; }
+
+		.image-viewer {
+			display: none;
+			position: fixed;
+			z-index: 9999;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.9);
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+		}
+
+		.viewer-content {
+			max-width: 90%;
+			max-height: 80%;
+			border: 3px solid white;
+			border-radius: 4px;
+			box-shadow: 0 0 20px rgba(0,0,0,0.5);
+			object-fit: contain;
+		}
+
+		#viewer-caption {
+			color: #ccc;
+			padding: 15px;
+			text-align: center;
+			font-size: 1.1rem;
+			font-family: sans-serif;
+		}
+
+		.close-viewer {
+			position: absolute;
+			top: 20px;
+			right: 35px;
+			color: #f1f1f1;
+			font-size: 40px;
+			font-weight: bold;
+			cursor: pointer;
+			transition: 0.3s;
+		}
+
+		.close-viewer:hover {
+			color: #bbb;
+		}
+	</style>
 
 	<script type="application/ld+json">
 		{
@@ -1466,6 +1625,12 @@
 			</div>
 		</div>
 	</div>
+	<!-- Overlay para Visualização de Imagens -->
+	<div id="image-viewer-overlay" class="image-viewer">
+		<span class="close-viewer">&times;</span>
+		<img class="viewer-content" id="full-res-image">
+		<div id="viewer-caption"></div>
+	</div>
 
     <script>
         const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
@@ -1579,6 +1744,43 @@
 							<p>Com experiência em desenvolvimento web, SEO e análise de dados, crio soluções que vão além da estética — focadas em visibilidade, posicionamento e conversão.</p>
 
 							<p>O cartão digital é hoje uma das ferramentas mais eficientes para networking e geração de oportunidades.</p>
+
+							<h3 style="color:var(--newtitle-color); margin-top:1em;">Mauricio Jun</h3>
+							<div class="mj-carousel-container" id="carousel-quem-sou">
+								<div class="mj-carousel-viewport">
+									<div class="mj-carousel-track">
+										<div class="mj-carousel-item">
+											<div class="mj-image-wrapper">
+												<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.png" alt="Minha Trajetória Profissional" class="mj-carousel-img">
+												<div class="mj-carousel-caption">Minha Trajetória Profissional</div>
+											</div>
+										</div>
+										<div class="mj-carousel-item">
+											<div class="mj-image-wrapper">
+												<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-e-logo-v08.png" alt="Especialista em Tecnologia" class="mj-carousel-img">
+												<div class="mj-carousel-caption">Especialista em Tecnologia</div>
+											</div>
+										</div>
+										<div class="mj-carousel-item">
+											<div class="mj-image-wrapper">
+											<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-clientes-v13.png" alt="Inovação e Design" class="mj-carousel-img">
+												<div class="mj-carousel-caption">Inovação e Design</div>
+											</div>
+										</div>
+										<div class="mj-carousel-item">
+											<div class="mj-image-wrapper">
+											<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v14.png" alt="Solicite já o seu cartão" class="mj-carousel-img">
+												<div class="mj-carousel-caption">Solicite já o seu cartão</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<button class="mj-carousel-nav mj-prev" aria-label="Anterior">&#10094;</button>
+								<button class="mj-carousel-nav mj-next" aria-label="Próximo">&#10095;</button>
+
+								<div class="mj-carousel-dots"></div>
+							</div>
 						`
 			},
 
@@ -1879,6 +2081,11 @@
             document.getElementById(`bg-${targetSide}`).style.backgroundImage = `url('${sectionsData[key].image}')`;
 			//console.log(key);
 			updateBackgroundContent(key,`bg-${targetSide}`);
+
+			// --- CORREÇÃO AQUI: Inicializa o carrossel após o HTML ser injetado ---
+			setTimeout(() => {
+				initCarousels();
+			}, 100); // Pequeno delay para garantir que o DOM renderizou
             
             // 1. SINCRONIZAÇÃO: Remove classe ativa de TODOS os nav-icons (front e back)
             document.querySelectorAll('.nav-icons a').forEach(el => el.classList.remove('nav-active'));
@@ -1992,6 +2199,9 @@
             document.getElementById('bg-front').style.backgroundImage = `url('${sectionsData.INICIO.image}')`;
 			//updateBackgroundContent('${sectionsData.INICIO.video');
 			updateBackgroundContent('INICIO','bg-front');
+
+			// Inicializa o carrossel no carregamento
+			initCarousels();
 
 			// Marca o ícone de início como ativo (se houver correspondência)
             const initialLinks = document.querySelectorAll(`.nav-icons a[onclick*="'INICIO'"]`);
@@ -2131,6 +2341,8 @@
             'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v13.png',
             'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v14.png',
 			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v20.png',
+			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-e-logo-v08.png',
+			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-clientes-v13.png',
 			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-qrcode.png',
         ];
 
@@ -2499,6 +2711,110 @@
 			.then(() => console.log("PWA: Service Worker Registrado"))
 			.catch(err => console.log("PWA: Erro no registro", err));
 		}
+	</script>
+
+	<script>
+		function initCarousels() {
+			const carousels = document.querySelectorAll('.mj-carousel-container');
+
+			carousels.forEach(container => {
+				const track = container.querySelector('.mj-carousel-track');
+				const items = container.querySelectorAll('.mj-carousel-item');
+				const nextBtn = container.querySelector('.mj-next');
+				const prevBtn = container.querySelector('.mj-prev');
+				const dotsContainer = container.querySelector('.mj-carousel-dots');
+				
+				if (!track || items.length === 0) return;
+
+				let currentIndex = 0;
+
+				// 1. Configuração das Imagens (ZOOM)
+				const images = container.querySelectorAll('.mj-carousel-item img');
+				images.forEach(img => {
+					img.style.cursor = 'zoom-in';
+					img.onclick = function() {
+						openImageOverlay(this.src, this.alt);
+					};
+				});
+
+				// 2. Configuração das Bolinhas (Dots)
+				dotsContainer.innerHTML = '';
+				items.forEach((_, i) => {
+					const dot = document.createElement('div');
+					dot.classList.add('mj-dot');
+					if (i === 0) dot.classList.add('mj-dot-active');
+					dot.onclick = () => goToSlide(i);
+					dotsContainer.appendChild(dot);
+				});
+
+				const dots = dotsContainer.querySelectorAll('.mj-dot');
+
+				function updateCarousel() {
+					const amountToMove = items[0].offsetWidth * currentIndex;
+					track.style.transform = `translateX(-${amountToMove}px)`;
+					dots.forEach(dot => dot.classList.remove('mj-dot-active'));
+					if(dots[currentIndex]) dots[currentIndex].classList.add('mj-dot-active');
+				}
+
+				function goToSlide(index) {
+					currentIndex = index;
+					updateCarousel();
+				}
+
+				// 3. Eventos de Navegação
+				nextBtn.onclick = (e) => {
+					e.stopPropagation();
+					currentIndex = (currentIndex + 1) % items.length;
+					updateCarousel();
+				};
+
+				prevBtn.onclick = (e) => {
+					e.stopPropagation();
+					currentIndex = (currentIndex - 1 + items.length) % items.length;
+					updateCarousel();
+				};
+
+				// Suporte a Swipe (Touch) para Mobile
+				let startX = 0;
+				container.addEventListener('touchstart', (e) => startX = e.touches[0].clientX, {passive: true});
+				container.addEventListener('touchend', (e) => {
+					let endX = e.changedTouches[0].clientX;
+					if (startX - endX > 50) nextBtn.click(); // Deslizou para esquerda
+					if (endX - startX > 50) prevBtn.click(); // Deslizou para direita
+				}, {passive: true});
+			});
+		}
+
+		// --- FUNÇÕES DO OVERLAY DE IMAGEM ---
+
+		function openImageOverlay(src, alt) {
+			const viewer = document.getElementById('image-viewer-overlay');
+			const viewerImg = document.getElementById('full-res-image');
+			const captionText = document.getElementById('viewer-caption');
+
+			viewer.style.display = "flex";
+			viewerImg.src = src;
+			captionText.innerHTML = alt || "Sem legenda"; // Usa o atributo ALT como legenda
+		}
+
+		// Fechar ao clicar no X
+		document.querySelector('.close-viewer').onclick = function() {
+			document.getElementById('image-viewer-overlay').style.display = "none";
+		};
+
+		// Fechar ao clicar fora da imagem
+		document.getElementById('image-viewer-overlay').onclick = function(e) {
+			if (e.target.id === 'image-viewer-overlay') {
+				this.style.display = "none";
+			}
+		};
+
+		// Fechar com a tecla ESC
+		document.addEventListener('keydown', (e) => {
+			if (e.key === "Escape") {
+				document.getElementById('image-viewer-overlay').style.display = "none";
+			}
+		});
 	</script>
 
 	<script>
