@@ -1377,6 +1377,88 @@
 			color: #bbb;
 		}
 	</style>
+	<style>
+		/* Estilos 100% isolados – nenhuma propriedade transform, translateZ, perspective */
+		#insta-block-ccmkql.insta-safe-embed {
+		display: block;
+		width: 100%;
+		max-width: 560px;
+		margin: 1.5rem auto;
+		background: transparent;
+		font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+		}
+		#insta-block-ccmkql .insta-card {
+		background: #ffffff;
+		border-radius: 20px;
+		box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+		overflow: hidden;
+		transition: box-shadow 0.2s;
+		}
+		#insta-block-ccmkql .insta-card:hover {
+		box-shadow: 0 20px 32px rgba(0, 0, 0, 0.12);
+		}
+		#insta-block-ccmkql .insta-loading {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+		gap: 12px;
+		background: #fafafa;
+		min-height: 320px;
+		text-align: center;
+		}
+		#insta-block-ccmkql .insta-pulse {
+		width: 44px;
+		height: 44px;
+		background: #e0e0e0;
+		border-radius: 50%;
+		animation: gentle-pulse 1.2s infinite;
+		}
+		@keyframes gentle-pulse {
+		0% { opacity: 0.5; box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1); }
+		50% { opacity: 1; box-shadow: 0 0 0 6px rgba(224, 48, 108, 0.15); }
+		100% { opacity: 0.5; box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+		}
+		#insta-block-ccmkql .insta-loading p {
+		margin: 0;
+		color: #4b5563;
+		font-size: 0.9rem;
+		}
+		#insta-block-ccmkql .insta-fallback {
+		display: none;
+		padding: 1.8rem;
+		text-align: center;
+		background: #fff;
+		}
+		#insta-block-ccmkql .insta-fallback a {
+		display: inline-block;
+		background: #1a1a1a;
+		color: white;
+		padding: 10px 24px;
+		border-radius: 40px;
+		text-decoration: none;
+		font-weight: 500;
+		margin-top: 12px;
+		transition: background 0.2s;
+		}
+		#insta-block-ccmkql .insta-fallback a:hover {
+		background: #e1306c;
+		}
+		#insta-block-ccmkql .insta-embed-target {
+		width: 100%;
+		display: none;
+		}
+		#insta-block-ccmkql .instagram-media {
+		margin: 0 auto !important;
+		width: 100% !important;
+		min-width: 280px !important;
+		border: 0 !important;
+		}
+		@media (max-width: 600px) {
+		#insta-block-ccmkql.insta-safe-embed { max-width: 100%; margin: 1rem 0; }
+		}
+	</style>
 
 	<script type="application/ld+json">
 		{
@@ -1434,6 +1516,122 @@
 		if (navigator.onLine === false) {
 			location.replace("/mauricio-jun-ti/offline.html");
 		}
+	</script>
+
+	<script>
+		(function() {
+		// URL limpa (sem parâmetros rastreadores)
+		const POST_URL = "https://www.instagram.com/p/CCMkQLBg3_k/";
+		const loader = document.getElementById("instaLoader_ccmkql");
+		const fallbackDiv = document.getElementById("instaFallback_ccmkql");
+		const targetDiv = document.getElementById("instaTarget_ccmkql");
+		
+		let embedSuccess = false;
+		
+		// 1. Cria blockquote oficial do Instagram
+		const blockquote = document.createElement("blockquote");
+		blockquote.className = "instagram-media";
+		blockquote.setAttribute("data-instgrm-permalink", POST_URL);
+		blockquote.setAttribute("data-instgrm-version", "14");
+		blockquote.style.margin = "0";
+		blockquote.style.width = "100%";
+		blockquote.style.background = "transparent";
+		// Conteúdo textual mínimo (fallback interno)
+		blockquote.innerHTML = `<div style="background:#fff; border-radius:12px; padding:16px; text-align:center;"><a href="${POST_URL}" target="_blank">Ver no Instagram</a></div>`;
+		
+		// Adiciona ao target (inicialmente oculto)
+		targetDiv.appendChild(blockquote);
+		
+		// 2. Função para mostrar o embed oficial e esconder loader
+		function showOfficialEmbed() {
+			if (loader) loader.style.display = "none";
+			if (targetDiv) targetDiv.style.display = "block";
+			if (fallbackDiv) fallbackDiv.style.display = "none";
+			embedSuccess = true;
+		}
+		
+		// 3. Função para mostrar fallback (caso o embed oficial não carregue)
+		function showFallback() {
+			if (!embedSuccess) {
+			if (loader) loader.style.display = "none";
+			if (targetDiv) targetDiv.style.display = "none";
+			if (fallbackDiv) fallbackDiv.style.display = "block";
+			}
+		}
+		
+		// 4. Carregar o script embed.js (somente se não existir)
+		function loadInstagramScript() {
+			return new Promise((resolve, reject) => {
+			if (document.querySelector('script[src*="instagram.com/embed.js"]')) {
+				// Já existe, aguarda a API ficar pronta
+				let attempts = 0;
+				const check = setInterval(() => {
+				if (window.instgrm && window.instgrm.Embeds) {
+					clearInterval(check);
+					resolve();
+				}
+				if (attempts++ > 30) { // 3 segundos
+					clearInterval(check);
+					reject(new Error("instgrm timeout"));
+				}
+				}, 100);
+				return;
+			}
+			const script = document.createElement('script');
+			script.src = "https://www.instagram.com/embed.js";
+			script.async = true;
+			script.onload = () => {
+				setTimeout(() => {
+				if (window.instgrm && window.instgrm.Embeds) resolve();
+				else reject(new Error("instgrm not available after load"));
+				}, 400);
+			};
+			script.onerror = () => reject(new Error("embed.js failed to load"));
+			document.head.appendChild(script);
+			});
+		}
+		
+		// 5. Forçar o processamento do embed
+		function processEmbed() {
+			if (window.instgrm && window.instgrm.Embeds) {
+			window.instgrm.Embeds.process();
+			// Espera o iframe aparecer
+			let checkIframe = setInterval(() => {
+				const iframe = document.querySelector("#instaTarget_ccmkql iframe");
+				if (iframe && iframe.src && iframe.src.includes("instagram.com")) {
+				clearInterval(checkIframe);
+				showOfficialEmbed();
+				}
+			}, 200);
+			// Timeout máximo para o iframe (4 segundos)
+			setTimeout(() => {
+				clearInterval(checkIframe);
+				if (!embedSuccess) {
+				showFallback();
+				}
+			}, 4000);
+			} else {
+			showFallback();
+			}
+		}
+		
+		// 6. Executa com timeout global de segurança
+		loadInstagramScript()
+			.then(() => {
+			processEmbed();
+			})
+			.catch((err) => {
+			console.warn("Instagram embed falhou:", err);
+			showFallback();
+			});
+		
+		// Fallback definitivo: se em 4.5 segundos ainda não foi exibido nada, força fallback
+		setTimeout(() => {
+			if (!embedSuccess && loader && loader.style.display !== "none") {
+			showFallback();
+			}
+		}, 4500);
+		})();
 	</script>
 
 </head>
@@ -1782,6 +1980,24 @@
 								<button class="mj-carousel-nav mj-next" aria-label="Próximo">&#10095;</button>
 
 								<div class="mj-carousel-dots"></div>
+							</div>
+							<div id="insta-block-ccmkql" class="insta-safe-embed">
+								<div class="insta-card">
+								<!-- Área de loading inicial -->
+								<div id="instaLoader_ccmkql" class="insta-loading">
+									<div class="insta-pulse"></div>
+									<p>📸 Carregando publicação do Instagram...</p>
+								</div>
+								<!-- Fallback que aparece se o embed oficial falhar -->
+								<div id="instaFallback_ccmkql" class="insta-fallback">
+									<span>⚠️ Não foi possível carregar o preview interativo.</span><br/>
+									<a href="https://www.instagram.com/p/CCMkQLBg3_k/" target="_blank" rel="noopener noreferrer">
+									🔗 Ver publicação original no Instagram
+									</a>
+								</div>
+								<!-- Alvo dinâmico para o embed oficial -->
+								<div id="instaTarget_ccmkql" class="insta-embed-target"></div>
+								</div>
 							</div>
 						`
 			},
