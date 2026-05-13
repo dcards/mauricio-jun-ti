@@ -1377,6 +1377,120 @@
 			color: #bbb;
 		}
 	</style>
+	<style>
+		/* Instagram Embed - Estilos seguros para não interferir no 3D */
+		.instagram-embed {
+			width: 100% !important;
+			max-width: 560px;
+			margin: 1.5rem auto;
+			position: relative;
+			transform: translateZ(0);
+			backface-visibility: hidden;
+			display: block;
+		}
+		.instagram-media {
+			margin: 0 auto !important;
+			width: 100% !important;
+			min-width: auto !important;
+			background: transparent !important;
+			border: 0 !important;
+		}
+		.instagram-embed blockquote, .instagram-embed blockquote div {
+			width: 100% !important;
+		}
+		/* Fallback elegante */
+		.instagram-embed .insta-fallback {
+			background: #fff;
+			border-radius: 12px;
+			padding: 16px;
+			text-align: center;
+			font-family: system-ui, sans-serif;
+		}
+		.instagram-embed .insta-fallback a {
+			display: inline-block;
+			background: #1a1a1a;
+			color: white;
+			padding: 10px 24px;
+			border-radius: 40px;
+			text-decoration: none;
+			margin-top: 12px;
+			transition: background 0.2s;
+		}
+		.instagram-embed .insta-fallback a:hover {
+			background: #e1306c;
+		}
+		.facebook-embed .insta-fallback span, .instagram-embed .insta-fallback span {
+			color: #000;
+		}
+		.instagram-media-registered, .instagram-media-registered div {
+			width: 100% !important;
+			min-width: auto !important;
+		}
+		.instagram-media div a, .instagram-media-registered div a {
+			color: #000;
+		}
+	</style>
+	<style>
+		/* Facebook Embed - Preserva efeitos 3D */
+		.facebook-embed {
+			width: 100%;
+			max-width: 100%;
+			margin: 1.5rem auto;
+			position: relative;
+			transform: translateZ(0);
+			backface-visibility: hidden;
+			display: flex;
+			justify-content: center;
+		}
+		.facebook-embed iframe {
+			width: 100% !important;
+			height: auto;
+			min-height: 280px;
+			border: none;
+			overflow: hidden;
+			border-radius: 8px;
+			background: transparent;
+		}
+		/* Fallback enquanto carrega */
+		.facebook-embed .fb-loading {
+			background: #f0f2f5;
+			border-radius: 8px;
+			padding: 2rem;
+			text-align: center;
+			color: #606770;
+			font-family: system-ui, sans-serif;
+		}
+		/* Fallback elegante (reutiliza o estilo do Instagram) */
+		.instagram-embed .insta-fallback,
+		.facebook-embed .insta-fallback {
+			background: #fff;
+			border-radius: 12px;
+			padding: 16px;
+			text-align: center;
+			font-family: system-ui, sans-serif;
+		}
+		.instagram-embed .insta-fallback a,
+		.facebook-embed .insta-fallback a {
+			display: inline-block;
+			background: #1a1a1a;
+			color: white;
+			padding: 10px 24px;
+			border-radius: 40px;
+			text-decoration: none;
+			margin-top: 12px;
+			transition: background 0.2s;
+		}
+		.instagram-embed .insta-fallback a:hover,
+		.facebook-embed .insta-fallback a:hover {
+			background: #e1306c;
+		}
+		.facebook-embed .insta-fallback a:hover {
+			background: #1877f2;
+		}
+		.fb_iframe_widget_fluid span {
+			width: 100% !important;
+		}
+	</style>
 
 	<script type="application/ld+json">
 		{
@@ -1880,7 +1994,7 @@
 				image: "./imgs/mauricio-jun-ti-v08.png",
 				video: "",
 				content: `
-							<p>Por que Escolher Nosso Cartão de Visita Digital?</p>
+							<p><img src="./imgs/mauricio-jun-dicas-mobile.png" alt="Vantagens" class="content-right-circular-image">Por que Escolher Nosso Cartão de Visita Digital?</p>
 							<p>Serviços como Linktree, Beacons, Blinq, Popl ou HiHello oferecem praticidade, mas limitam sua marca a um modelo padronizado.</p>
 
 							<p>Elas oferecem:</p>
@@ -1903,6 +2017,11 @@
 							</ul>
 
 							<p><strong>Resultado: mais autoridade, mais confiança e mais conversão.</strong></p>
+							
+							<p><strong>VEJA NAS MINHAS REDES</strong></p>
+							<!-- NOVO EMBED ESCALÁVEL DO INSTAGRAM -->
+							<div class="instagram-embed" data-instagram-url="https://www.instagram.com/p/CCMkQLBg3_k/"></div>
+							<!-- Para adicionar mais posts, basta repetir a linha acima com outra URL -->
 						`
 			},
 
@@ -1912,7 +2031,7 @@
 				image: "./imgs/mauricio-jun-ti-v03.png",
 				video: "",
 				content: `
-							<p>O processo de criação do seu cartão digital foi pensado para ser transparente e colaborativo:</p>
+							<p><img src="./imgs/mauricio-jun-sobre-mobile.png" alt="Como funciona" class="content-right-circular-image">O processo de criação do seu cartão digital foi pensado para ser transparente e colaborativo:</p>
 							<ol style="padding-left:2em; margin-bottom:1em; color:var(--text-color);">
 								<li><strong>Briefing:</strong> entendemos sua área de atuação e os objetivos do cartão.</li>
 								<li><strong>Personalização:</strong> reunimos logotipo, fotos, vídeos, cores e textos que representam você ou sua empresa.</li>
@@ -1950,7 +2069,7 @@
 				image: "./imgs/mauricio-jun-ti-v20.png",
 				video: "",
 				content: `
-							<p>Nosso cartão de visita digital é ideal para quem precisa ser encontrado, contatado rapidamente e ter uma presença online profissional:</p>
+							<p><img src="./imgs/mauricio-jun-portfolio-mobile.png" alt="Para quem" class="content-right-circular-image">Nosso cartão de visita digital é ideal para quem precisa ser encontrado, contatado rapidamente e ter uma presença online profissional:</p>
 
 							<ul>
 								<li><strong>Autônomos e prestadores de serviço</strong> (eletricistas, encanadores, designers, consultores).</li>
@@ -1962,6 +2081,11 @@
 							<h3 style="color:var(--newtitle-color); margin-top:1em;">Estratégia para Empresas</h3>
 							<p>Para pequenas e médias empresas com baixa relevância online, o cartão digital dos funcionários é uma poderosa estratégia de SEO. Cada colaborador pode ter seu cartão integrado ao domínio da empresa (como <strong>joao.suaempresa.com.br</strong> ou <strong>suaempresa.com.br/joao</strong>).</p>
 							<p>Sempre que um funcionário compartilha seu cartão, ele gera tráfego qualificado para o site principal, <strong>melhorando o posicionamento nos mecanismos de busca</strong>, construindo autoridade digital da marca e fortalecendo a presença online.</p>
+
+							<p><strong>VEJA NAS MINHAS REDES</strong></p>
+							<div class="facebook-embed" 
+								data-facebook-url="https://www.facebook.com/mauricio.jun.ti/posts/pfbid028pSYQC4NGNe2RX5e5KD5DdCa4mAJoVyxUCSesyTu58CLJ1oncMUF32ehTbhkAVzkl">
+							</div>
 						`
 			},
 
@@ -1971,7 +2095,7 @@
 				image: "./imgs/mauricio-jun-ti-v10.png",
 				video: "",
 				content: `
-							<p>Com nosso cartão de visita digital, você não fica no escuro. Utilizamos <strong>Google Analytics e Google Tag Manager</strong> para fornecer métricas reais de desempenho.</p>
+							<p><img src="./imgs/mauricio-jun-novidades-mobile.png" alt="Estratégia" class="content-right-circular-image">Com nosso cartão de visita digital, você não fica no escuro. Utilizamos <strong>Google Analytics e Google Tag Manager</strong> para fornecer métricas reais de desempenho.</p>
 							<p><strong>O que você poderá acompanhar:</strong></p>
 							<ul>
 								<li>Quantas pessoas visualizaram seu cartão.</li>
@@ -2134,6 +2258,15 @@
 					${socialMediaHTML} 
 				</article>
 			`;
+			// Após injetar o HTML, processa os embeds do Instagram que estiverem dentro dessa seção
+			const newContentDiv = document.getElementById(`content-${targetSide}`);
+			if (newContentDiv && window.processInstagramEmbeds) {
+				window.processInstagramEmbeds(newContentDiv);
+			}
+			// Dentro de changeContent, após a injeção do HTML:
+			if (window.processFacebookEmbeds) {
+				window.processFacebookEmbeds(document.getElementById(`content-${targetSide}`));
+			}
             showcopyleftyear();
             document.getElementById(`bg-${targetSide}`).style.backgroundImage = `url('${sectionsData[key].image}')`;
 			//console.log(key);
@@ -2253,6 +2386,15 @@
 					${socialMediaHTML} 
 				</article>
             `;
+			// Após injetar o HTML, processa os embeds do Instagram que estiverem dentro dessa seção
+			const newContentDivInicio = document.getElementById('content-front');
+			if (newContentDivInicio && window.processInstagramEmbeds) {
+				window.processInstagramEmbeds(newContentDivInicio);
+			}
+			// Dentro de changeContent, após a injeção do HTML:
+			if (window.processFacebookEmbeds) {
+				window.processFacebookEmbeds(document.getElementById('content-front'));
+			}
             showcopyleftyear();
             document.getElementById('bg-front').style.backgroundImage = `url('${sectionsData.INICIO.image}')`;
 			//updateBackgroundContent('${sectionsData.INICIO.video');
@@ -2980,6 +3122,249 @@
 				}
 			}
 		}
+	</script>
+	<script>
+		// ============================================================
+		// Instagram Embed Manager - Funciona com conteúdo dinâmico,
+		// múltiplos embeds, ambas as faces (front/back) e sem conflitos com efeitos 3D.
+		// ============================================================
+		(function() {
+			let instagramScriptLoaded = false;
+			let instagramScriptLoading = false;
+			let pendingCallbacks = [];
+
+			function loadInstagramScript(callback) {
+				if (instagramScriptLoaded) {
+					if (callback) callback(true);
+					return;
+				}
+				if (instagramScriptLoading) {
+					pendingCallbacks.push(callback);
+					return;
+				}
+				instagramScriptLoading = true;
+				const script = document.createElement('script');
+				script.src = "https://www.instagram.com/embed.js";
+				script.async = true;
+				script.onload = function() {
+					instagramScriptLoaded = true;
+					if (callback) callback(true);
+					pendingCallbacks.forEach(cb => cb(true));
+					pendingCallbacks = [];
+				};
+				script.onerror = function() {
+					console.warn("Instagram embed.js falhou ao carregar.");
+					instagramScriptLoading = false;
+					if (callback) callback(false);
+					pendingCallbacks.forEach(cb => cb(false));
+					pendingCallbacks = [];
+				};
+				document.head.appendChild(script);
+			}
+
+			function createInstagramEmbed(container, url) {
+				if (!container || !url) return;
+				container.innerHTML = ''; // Limpa o container
+
+				// Cria o blockquote oficial
+				const blockquote = document.createElement('blockquote');
+				blockquote.className = 'instagram-media';
+				blockquote.setAttribute('data-instgrm-permalink', url);
+				blockquote.setAttribute('data-instgrm-version', '14');
+				blockquote.style.margin = '0';
+				blockquote.style.width = '100%';
+				blockquote.style.background = 'transparent';
+				blockquote.style.minWidth = '250px';
+
+				// Fallback interno (texto simples)
+				const fallbackDiv = document.createElement('div');
+				fallbackDiv.style.background = '#fff';
+				fallbackDiv.style.borderRadius = '12px';
+				fallbackDiv.style.padding = '16px';
+				fallbackDiv.style.textAlign = 'center';
+				const link = document.createElement('a');
+				link.href = url;
+				link.target = '_blank';
+				link.rel = 'noopener noreferrer';
+				link.textContent = 'Ver no Instagram';
+				fallbackDiv.appendChild(link);
+				blockquote.appendChild(fallbackDiv);
+				container.appendChild(blockquote);
+
+				// Tenta processar o embed
+				const process = (success) => {
+					if (success !== false && window.instgrm && window.instgrm.Embeds) {
+						window.instgrm.Embeds.process();
+					} else {
+						// Fallback definitivo
+						container.innerHTML = `
+							<div class="insta-fallback">
+								<span>⚠️ Não foi possível carregar o preview interativo.</span><br/>
+								<a href="${url}" target="_blank" rel="noopener noreferrer">
+									🔗 Ver publicação original no Instagram
+								</a>
+							</div>
+						`;
+					}
+				};
+
+				if (window.instgrm && window.instgrm.Embeds) {
+					process(true);
+				} else {
+					loadInstagramScript(process);
+				}
+			}
+
+			// Processa todos os elementos .instagram-embed dentro de um container
+			window.processInstagramEmbeds = function(container) {
+				if (!container) container = document;
+				const embeds = container.querySelectorAll('.instagram-embed:not(.processed)');
+				embeds.forEach(embed => {
+					const url = embed.getAttribute('data-instagram-url');
+					if (url) {
+						embed.classList.add('processed');
+						createInstagramEmbed(embed, url);
+					}
+				});
+			};
+
+			// Observa mudanças no DOM para capturar novos embeds (ex: quando changeContent é chamado)
+			const observer = new MutationObserver(mutations => {
+				mutations.forEach(mutation => {
+					mutation.addedNodes.forEach(node => {
+						if (node.nodeType === 1) {
+							if (node.matches && node.matches('.instagram-embed')) {
+								window.processInstagramEmbeds(node);
+							} else if (node.querySelectorAll) {
+								const embeds = node.querySelectorAll('.instagram-embed');
+								if (embeds.length) window.processInstagramEmbeds(node);
+							}
+						}
+					});
+				});
+			});
+			observer.observe(document.body, { childList: true, subtree: true });
+
+			// Processa os embeds que já existem no carregamento inicial
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', () => window.processInstagramEmbeds());
+			} else {
+				window.processInstagramEmbeds();
+			}
+		})();
+	</script>
+	<script>
+		// ============================================================
+		// Facebook Embed Manager - SDK oficial (sem iframe direto)
+		// ============================================================
+		(function() {
+			let fbSDKLoaded = false;
+
+			function loadFacebookSDK() {
+				if (fbSDKLoaded) return Promise.resolve();
+				return new Promise((resolve, reject) => {
+					if (window.FB && window.FB.XFBML) {
+						fbSDKLoaded = true;
+						resolve();
+						return;
+					}
+					const script = document.createElement('script');
+					script.src = "https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v18.0";
+					script.async = true;
+					script.defer = true;
+					script.onload = () => {
+						fbSDKLoaded = true;
+						resolve();
+					};
+					script.onerror = () => reject(new Error('Falha ao carregar SDK do Facebook'));
+					document.head.appendChild(script);
+				});
+			}
+
+			function createFacebookEmbed(container, postUrl) {
+				if (!container || !postUrl) return;
+				// Evita recriar
+				if (container.querySelector('.fb-post')) return;
+
+				// Mostra loading
+				container.innerHTML = `<div class="fb-loading">📄 Carregando publicação do Facebook...</div>`;
+
+				// Cria o container para o post do Facebook
+				const fbPostDiv = document.createElement('div');
+				fbPostDiv.className = 'fb-post';
+				fbPostDiv.setAttribute('data-href', postUrl);
+				fbPostDiv.setAttribute('data-width', '500');
+				fbPostDiv.setAttribute('data-show-text', 'false');
+				// Opcional: remove bordas
+				fbPostDiv.style.backgroundColor = 'transparent';
+				fbPostDiv.style.width = '100%';
+
+				container.innerHTML = ''; // limpa loading
+				container.appendChild(fbPostDiv);
+
+				// Processa o XFBML
+				if (window.FB && window.FB.XFBML) {
+					window.FB.XFBML.parse(container);
+				} else {
+					loadFacebookSDK().then(() => {
+						window.FB.XFBML.parse(container);
+					}).catch(() => {
+						// Fallback caso o SDK falhe
+						container.innerHTML = `
+							<div class="insta-fallback">
+								<span>⚠️ Não foi possível carregar o preview.</span><br/>
+								<a href="${postUrl}" target="_blank" rel="noopener">🔗 Ver publicação original no Facebook</a>
+							</div>
+						`;
+					});
+				}
+
+				// Fallback de timeout (se o SDK não processar em 8 segundos)
+				setTimeout(() => {
+					if (container.querySelector('.fb-post') && container.querySelector('.fb-post').innerHTML.trim() === '') {
+						container.innerHTML = `
+							<div class="insta-fallback">
+								<span>⚠️ Falha ao carregar o post.</span><br/>
+								<a href="${postUrl}" target="_blank" rel="noopener">🔗 Clique para ver no Facebook</a>
+							</div>
+						`;
+					}
+				}, 8000);
+			}
+
+			window.processFacebookEmbeds = function(container) {
+				if (!container) container = document;
+				const embeds = container.querySelectorAll('.facebook-embed:not(.processed)');
+				embeds.forEach(embed => {
+					let postUrl = embed.getAttribute('data-facebook-url');
+					if (!postUrl) return;
+					embed.classList.add('processed');
+					createFacebookEmbed(embed, postUrl);
+				});
+			};
+
+			const observer = new MutationObserver(mutations => {
+				mutations.forEach(mutation => {
+					mutation.addedNodes.forEach(node => {
+						if (node.nodeType === 1) {
+							if (node.matches && node.matches('.facebook-embed')) {
+								window.processFacebookEmbeds(node);
+							} else if (node.querySelectorAll) {
+								const embeds = node.querySelectorAll('.facebook-embed');
+								if (embeds.length) window.processFacebookEmbeds(node);
+							}
+						}
+					});
+				});
+			});
+			observer.observe(document.body, { childList: true, subtree: true });
+
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', () => window.processFacebookEmbeds());
+			} else {
+				window.processFacebookEmbeds();
+			}
+		})();
 	</script>
 </body>
 </html>
