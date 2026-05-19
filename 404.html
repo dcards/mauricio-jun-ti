@@ -1492,6 +1492,174 @@
 			width: 100% !important;
 		}
 	</style>
+	<style>
+		
+		.btn-form-contato {
+			display: block;
+			width: fit-content;
+			max-width: 90%;
+			margin: 1.5em auto 0 auto;
+			padding: 0.75em 2em;
+			background: linear-gradient(135deg, #4C8F8F, #5FB3B3);
+			border: none;
+			border-radius: 50px;
+			font-family: var(--font-base);
+			font-weight: 600;
+			font-size: 1em;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			color: #fff;
+			cursor: pointer;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+			z-index: 10;
+			text-align: center;
+			backdrop-filter: blur(2px);
+		}
+		.btn-form-contato:hover {
+			transform: scale(1.02);
+			box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+			background: linear-gradient(135deg, #5FB3B3, #4C8F8F);
+		}
+
+		.form-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.85);
+			backdrop-filter: blur(8px);
+			z-index: 20000;
+			display: none;
+			justify-content: center;
+			align-items: center;
+			pointer-events: auto;
+			transition: opacity 0.3s ease;
+		}
+
+		.form-overlay.active {
+			display: flex;
+		}
+
+		.form-container {
+			position: relative;
+			width: 90%;
+			max-width: 700px;
+			max-height: 85vh;
+			background: #000000cc;
+			border-radius: 20px;
+			padding: 1em;
+			box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+			border: 1px solid rgba(95, 179, 179, 0.5);
+			backdrop-filter: blur(4px);
+			overflow-y: auto;
+			animation: fadeInUp 0.3s ease-out;
+		}
+
+		.close-form {
+			position: absolute;
+			top: 12px;
+			right: 20px;
+			font-size: 32px;
+			font-weight: bold;
+			color: #5FB3B3;
+			cursor: pointer;
+			transition: color 0.2s;
+			z-index: 10;
+			line-height: 1;
+		}
+		.close-form:hover {
+			color: #fff;
+		}
+
+		#ff-compose {
+			background: transparent !important;
+			margin-top: 0 !important;
+			padding: 0 !important;
+		}
+		#ff-compose .ff-form {
+			background: transparent;
+		}
+		.ff-minimal-theme .ff-form .ff-section {
+			min-height: auto;
+		}
+
+		.ff-watermark {
+			visibility: hidden;
+		}
+
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(30px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@media (max-width: 768px) {
+			.form-container {
+				width: 95%;
+				padding: 1em;
+			}
+			.btn-form-contato {
+				font-size: 0.85em;
+				padding: 0.6em 1.5em;
+			}
+		}
+		
+	</style>
+	<style>
+		/* Ajustes para o formulário do Hubspot dentro do overlay */
+		.form-container .hs-form-frame {
+		background: #fff;
+		border-radius: 16px;
+		padding: 1rem;
+		margin-top: 1rem;
+		box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+		}
+
+		/* Estilos para os campos do formulário Hubspot */
+		.hs-form-field {
+		margin-bottom: 1rem;
+		}
+		.hs-form-field label {
+		display: block;
+		font-weight: 600;
+		margin-bottom: 0.25rem;
+		color: #1f2937;
+		}
+		.hs-form-field input,
+		.hs-form-field textarea,
+		.hs-form-field select {
+		width: 100%;
+		padding: 0.5rem;
+		border: 1px solid #cbd5e1;
+		border-radius: 8px;
+		font-family: var(--font-base);
+		font-size: 0.9rem;
+		}
+		.hs-button {
+		background: linear-gradient(135deg, #4C8F8F, #5FB3B3);
+		border: none;
+		border-radius: 50px;
+		padding: 0.6rem 1.5rem;
+		font-weight: 600;
+		color: white;
+		cursor: pointer;
+		transition: transform 0.2s, box-shadow 0.2s;
+		}
+		.hs-button:hover {
+		transform: scale(1.02);
+		box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+		}
+		#hs-form-container {
+			margin-top: 2rem;
+		}
+	</style>
 
 	<script type="application/ld+json">
 		{
@@ -1745,6 +1913,176 @@
 		<span class="close-viewer">&times;</span>
 		<img class="viewer-content" id="full-res-image">
 		<div id="viewer-caption"></div>
+	</div>
+	<div id="form-overlay-unique" class="form-overlay">
+		<div class="form-container">
+			<span class="close-form">×</span>
+			<div id="hs-form-container">
+				<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+				<script>
+					hbspt.forms.create({
+						portalId: "51479252",
+						formId: "90484633-4378-4658-8a64-6c90fad731ee",
+						region: "na1"
+					});
+				</script>
+				<script>
+					function changebuttoncolor() {
+						var cssurl = "//fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+						$('#hs-form-iframe-0').contents().find('head').append($("<link/>", {
+							rel: "stylesheet",
+							href: cssurl,
+							type: "text/css"
+						}));
+						$('#hs-form-iframe-0').contents().find('body div').css({
+							'font-family': '\'Poppins\',Arial,Helvetica,sans-serif',
+							'font-weight': '400',
+							'font-size': '14px',
+							'color': '#333',
+						});
+						$('#hs-form-iframe-0').contents().find('body div label').css({
+							'font-family': '\'Poppins\',Arial,Helvetica,sans-serif',
+							'font-weight': '400',
+							'font-size': '14px',
+						});
+						$('#hs-form-iframe-0').contents().find('body div label span').css({
+							'font-family': '\'Poppins\',Arial,Helvetica,sans-serif',
+							'font-weight': '400',
+							'font-size': '14px',
+							'color': '#fff',
+						});
+						$('#hs-form-iframe-0').contents().find('body div label span.hs-form-required').css({
+							'font-family': '\'Poppins\',Arial,Helvetica,sans-serif',
+							'font-weight': '400',
+							'font-size': '14px',
+							'color': '#f2545b',
+						});
+						$('#hs-form-iframe-0').contents().find('body div.hs-form__virality-link').css({
+							'display': 'none',
+						});
+						$('#hs-form-iframe-0').contents().find('body div span.hubspot-link-text').css({
+							'font-family': '\'Poppins\',Arial,Helvetica,sans-serif',
+							'font-weight': '400',
+							'font-size': '14px',
+							'color': '#3a8c8c',
+						});
+						$('#hs-form-iframe-0').contents().find('body div.actions').css({
+							'margin-top': '0',
+							'margin-bottom': '0',
+							'padding': '1em',
+							'text-align': 'center',
+						});
+						$('#hs-form-iframe-0').contents().find('body div input').css({
+							'font-family': '\'Poppins\',Arial,Helvetica,sans-serif',
+							'font-weight': '400',
+							'font-size': '14px',
+						});
+						$('#hs-form-iframe-0').contents().find('body div textarea').css({
+							'font-family': '\'Poppins\',Arial,Helvetica,sans-serif',
+							'font-weight': '400',
+							'font-size': '14px',
+						});
+						$('#hs-form-iframe-0').contents().find('#hsForm_90484633-4378-4658-8a64-6c90fad731ee input[type=submit]').css({
+							'background': 'linear-gradient(135deg, #4C8F8F, #5FB3B3)',
+							'border-color': 'none',
+							'border-radius': '50px',
+							'width': 'fit-content',
+							'text-transform': 'uppercase',
+							'font-family': '\'Poppins\',Arial,Helvetica,sans-serif',
+							'font-weight': '600',
+							'font-size': '14px',
+							'padding': '0.75em 2em',
+							'letter-spacing': '1px',
+							'color': '#fff',
+							'cursor': 'pointer',
+							'transition': 'transform 0.3s ease, box-shadow 0.3s ease',
+							'border': 'none',
+						});
+						$('#hs-form-iframe-0').contents().find('#hsForm_90484633-4378-4658-8a64-6c90fad731ee input[type=submit]').hover(function () {
+							$(this).css("background-color", "#a3d9c5");
+						}, function () {
+							$(this).css("background-color", "#3a8c8c");
+						});
+					}
+					var checkButtonExist = setInterval(function () {
+						if ($('#hs-form-iframe-0').contents().find('#hsForm_90484633-4378-4658-8a64-6c90fad731ee input[type=submit]').length) {
+							changebuttoncolor();
+							clearInterval(checkButtonExist);
+						}
+					}, 100); // check every 100ms
+
+					function changethanxtext() {
+						var cssurl = "//fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+						$('#hs-form-iframe-0').contents().find('head').append($("<link/>", {
+							rel: "stylesheet",
+							href: cssurl,
+							type: "text/css"
+						}));
+						$('#hs-form-iframe-0').contents().find('body div').css({
+							'font-family': '\'Poppins\',Arial,Helvetica,sans-serif',
+							'font-weight': '400',
+							'font-size': '14px',
+						});
+						$('#hs-form-iframe-0').contents().find('body div.submitted-message p').css({
+							'font-family': '\'Poppins\',Arial,Helvetica,sans-serif',
+							'font-weight': '400',
+							'color': '#fff',
+							'font-size': '14px',
+							'line-height': '1.7em',
+						});
+						$('#hs-form-iframe-0').contents().find('body div.submitted-message p strong').css({
+							'font-family': '\'Poppins\',Arial,Helvetica,sans-serif',
+							'font-weight': '700',
+							'color': '#fff',
+							'font-size': '14px',
+							'line-height': '1.7em',
+						});
+						$('#hs-form-iframe-0').contents().find('body div.submitted-message p').css({
+							'background-color': 'unset !important',
+							'padding': '1em 0',
+						});
+						$('#hs-form-iframe-0').contents().find('body div.submitted-message p strong').css({
+							'background-color': 'unset !important',
+						});
+						$('#hs-form-iframe-0').contents().find('body div.submitted-message p span').css({
+							'color': '#fff',
+							'background-color': 'unset !important',
+						});
+					}
+					var checkThanxTextExist = setInterval(function () {
+						if ($('#hs-form-iframe-0').contents().find('body div.submitted-message').length) {
+							changethanxtext();
+							clearInterval(checkThanxTextExist);
+						}
+					}, 100); // check every 100ms
+
+					function changeerrortext() {
+						var cssurl = "//fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+						$('#hs-form-iframe-0').contents().find('head').append($("<link/>", {
+							rel: "stylesheet",
+							href: cssurl,
+							type: "text/css"
+						}));
+						$('#hs-form-iframe-0').contents().find('body div').css({
+							'font-family': '\'Poppins\',Arial,Helvetica,sans-serif',
+							'font-weight': '400',
+							'font-size': '14px',
+						});
+						$('#hs-form-iframe-0').contents().find('body div ul.hs-error-msgs label').css({
+							'font-family': '\'Poppins\',Arial,Helvetica,sans-serif',
+							'font-weight': '400',
+							'font-size': '14px',
+						});
+					}
+					var checkErrorExist = setInterval(function () {
+						if ($('#hs-form-iframe-0').contents().find('body div ul.hs-error-msgs').length) {
+							changeerrortext();
+							clearInterval(checkErrorExist);
+						}
+					}, 100); // check every 100ms
+				</script>
+			</div>
+		</div>
 	</div>
 
     <script>
@@ -3378,6 +3716,110 @@
 			} else {
 				window.processFacebookEmbeds();
 			}
+		})();
+	</script>
+	<script>
+		(function() {
+			const overlay = document.getElementById('form-overlay-unique');
+			const closeBtn = document.querySelector('#form-overlay-unique .close-form');
+
+			function openOverlay() {
+				if (overlay) overlay.classList.add('active');
+				window.addEventListener('message', function(event) {
+					// Garante que a mensagem está vindo do HubSpot
+					if (event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormReady') {
+						
+						// O HubSpot envia o ID do formulário nas propriedades do evento
+						const idDoFormCarregado = event.data.id;
+						const meuTargetFormId = "ca81e323-216b-439b-87d4-56166c8882d1-e48cbbb8-e8d2-4ecd-bd90-d182928344c7";
+
+						// Verifica se o ID bate (ou se faz parte do ID composto do HubSpot)
+						if (meuTargetFormId.includes(idDoFormCarregado)) {
+							console.log(`Confirmado via Evento: O formulário ${idDoFormCarregado} está pronto e ativo no iframe!`);
+							// Execute sua lógica aqui (ex: liberar um botão, disparar um pixel, etc.)
+						}
+					}
+				});
+			}
+
+			function closeOverlay() {
+				if (overlay) overlay.classList.remove('active');
+			}
+
+			// Fecha ao clicar no "X"
+			if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
+			// Fecha ao clicar fora do conteúdo (no fundo escuro)
+			if (overlay) overlay.addEventListener('click', function(e) {
+				if (e.target === overlay) closeOverlay();
+			});
+
+			// Adiciona o botão "Formulário de contato" na seção CONTATOS
+			function addFormButtonToContacts() {
+				const frontContent = document.getElementById('content-front');
+				const backContent = document.getElementById('content-back');
+
+				const processContent = (contentDiv) => {
+				if (!contentDiv) return;
+				if (contentDiv.querySelector('.btn-form-contato')) return;
+
+				const whatsappLink = contentDiv.querySelector('a[href*="wa.me"]');
+				if (whatsappLink) {
+					const parentP = whatsappLink.closest('p');
+					const button = document.createElement('button');
+					button.textContent = 'Formulário de contato';
+					button.className = 'btn-form-contato';
+					button.onclick = (e) => {
+					e.preventDefault();
+					e.stopPropagation();
+					openOverlay();
+					};
+					if (parentP) parentP.insertAdjacentElement('afterend', button);
+					else whatsappLink.insertAdjacentElement('afterend', button);
+				} else {
+					const textWrapper = contentDiv.querySelector('.text-wrapper');
+					if (textWrapper && !textWrapper.querySelector('.btn-form-contato')) {
+					const button = document.createElement('button');
+					button.textContent = 'Formulário de contato';
+					button.className = 'btn-form-contato';
+					button.onclick = (e) => {
+						e.preventDefault();
+						e.stopPropagation();
+						openOverlay();
+					};
+					textWrapper.appendChild(button);
+					}
+				}
+				};
+
+				processContent(frontContent);
+				processContent(backContent);
+			}
+
+			// Intercepta a função changeContent para fechar o overlay ao trocar de seção
+			const originalChangeContent = window.changeContent;
+			if (typeof originalChangeContent === 'function') {
+				window.changeContent = function(key) {
+				closeOverlay();               // fecha o formulário ao trocar de seção
+				originalChangeContent(key);
+				if (key === 'CONTATOS') {
+					setTimeout(addFormButtonToContacts, 150);
+				}
+				};
+			} else {
+				// Fallback com MutationObserver
+				const observer = new MutationObserver(() => {
+				if (document.getElementById('content-front') && document.getElementById('content-back')) {
+					addFormButtonToContacts();
+					observer.disconnect();
+				}
+				});
+				observer.observe(document.body, { childList: true, subtree: true });
+			}
+
+			// Adiciona o botão caso a seção atual já seja CONTATOS
+			window.addEventListener('DOMContentLoaded', () => {
+				setTimeout(addFormButtonToContacts, 500);
+			});
 		})();
 	</script>
 </body>
