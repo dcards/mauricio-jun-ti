@@ -139,6 +139,7 @@
             --mainfooterlink: #bfbfbf;
 			--content-circular-image-border: #D6BA84;
 			--call-to-action-link: #D6BA84;
+			font-size: 100%;
         }
         
         body, html { 
@@ -148,7 +149,8 @@
             background-color: #000;
         }
         body { 
-			font-size: clamp(0.75rem, 2vw, 1rem);
+			/*font-size: clamp(0.75rem, 2vw, 1rem);*/
+			font-size: clamp(0.875rem, 1.8vw, 1.125rem); /* 14px → 18px */
 			font-family: var(--font-base);
 			text-rendering: optimizeSpeed;
 			-webkit-text-size-adjust: 100%;
@@ -156,10 +158,17 @@
 		}
 
         h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; margin-bottom: 0.5em; color: var(--title-color); text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.7); }
-        h1 { font-size: clamp(1.5rem, 5vw, 2.5rem); }
+		h1 { font-size: clamp(1.375rem, 5vw, 2.8rem); } /* 22px → 44.8px (máximo) */
+		h2 { font-size: clamp(1.25rem, 4vw, 2.2rem); } /* 20px → 35.2px */
+		h3 { font-size: clamp(1.125rem, 3vw, 1.8rem); } /* 18px → 28.8px */
+        /*h1 { font-size: clamp(1.5rem, 5vw, 2.5rem); }
         h2 { font-size: clamp(1.3rem, 4vw, 2rem); }
         h3 { font-size: clamp(1.1rem, 3vw, 1.5rem); }
-
+		*/
+		p, li, .texto-corrido {
+			line-height: 1.5;
+			max-width: 70ch;
+		}
         /* --- CENA 3D --- */
         .scene {
             width: 100%; 
@@ -264,7 +273,7 @@
 			/*width: 75dvw;*/
 			max-width: 900px;
             background: rgba(0, 0, 0, 0.5);
-            padding: 1em;
+            padding: 2em 1em 1em 1em;
             border-radius: 15px; 
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255,255,255,0.1);
@@ -653,7 +662,8 @@
 		.fullscreenline button {
 			transition: all .3s;
 			background: initial;
-			padding: 10px 10px !important;
+			/*padding: 10px 10px !important;*/
+			padding: .8em .6em !important;
 			display: inline-block;
 			vertical-align: middle;
 			margin: 0 0 5px 0;
@@ -677,7 +687,7 @@
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: center;
-			gap: .8rem;
+			gap: .5em;
 			max-width: 100%;
 			padding: 1rem 0;
     		border-top: 1px solid var(--top-line-border);
@@ -1493,7 +1503,6 @@
 		}
 	</style>
 	<style>
-		
 		.btn-form-contato {
 			display: block;
 			width: fit-content;
@@ -1607,7 +1616,8 @@
 			}
 			.btn-form-contato {
 				font-size: 0.85em;
-				padding: 0.6em 1.5em;
+				/*padding: 0.6em 1.5em;*/
+				padding: 0.6em .9em;
 			}
 		}
 		
@@ -1658,6 +1668,153 @@
 		}
 		#hs-form-container {
 			margin-top: 2rem;
+		}
+	</style>
+	<style>
+		/* ===== INDICADOR DE ROLAGEM PARA .text-wrapper ===== */
+		.text-wrapper {
+			position: relative; /* Necessário para posicionar o indicador internamente */
+		}
+
+		.scroll-indicator {
+			position: absolute;
+			/*bottom: 16px;*/
+			/*top: -1.3em;*/
+			top: -0.3em;
+			/*right: 16px;*/
+			left: 50%;
+        	transform: translateX(-50%);
+			width: 44px;
+			height: 44px;
+			/*
+			background: rgba(0, 0, 0, 0.7);
+			backdrop-filter: blur(10px);
+			border-radius: 50%;
+			*/
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			font-size: 24px;
+			font-weight: normal !important;
+			cursor: pointer;
+			z-index: 150;
+			opacity: 0;
+			visibility: hidden;
+			/*
+			transition: opacity 0.3s ease, visibility 0.3s ease;
+			*/
+			pointer-events: auto;
+			/*
+			box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+			border: 1px solid rgba(255,255,255,0.3);
+			*/
+		}
+
+		.scroll-indicator.visible {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.scroll-indicator span {
+			display: inline-block;
+			/*animation: bounceDown 1.5s infinite ease;*/
+		}
+		.scroll-indicator.visible .fa-grip-lines::before {
+			font-size: .8em;
+			font-weight: 600;
+		}
+
+		@keyframes bounceDown {
+			0%, 100% { transform: translateY(0); }
+			50% { transform: translateY(6px); }
+		}
+
+		/* Responsivo */
+		@media (max-width: 480px) {
+			.scroll-indicator {
+				width: 36px;
+				height: 36px;
+				font-size: 20px;
+				/*bottom: 12px;*/
+				right: 12px;
+			}
+		}
+
+		.mj-highlight-box {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+			gap: 1rem;
+			margin: 2rem 0;
+		}
+		.mj-highlight-item {
+			display: flex;
+			align-items: flex-start;
+			gap: .8rem;
+			padding: 1rem;
+			border-radius: 18px;
+			background: rgba(255,255,255,.04);
+			border: 1px solid rgba(255,255,255,.06);
+			transition: .35s ease;
+		}
+		.mj-highlight-item:hover {
+			transform: translateY(-4px);
+			background: rgba(111,175,176,.08);
+			border-color: rgba(111,175,176,.22);
+		}
+		.mj-highlight-item span {
+			color: #D6BA84;
+			font-size: 1.2rem;
+			line-height: 1;
+		}
+		.mj-highlight-item p {
+			margin: 0;
+			line-height: 1.5;
+		}
+		.mj-cta-links {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+			gap: 1rem;
+			margin-top: 2.5rem;
+		}
+		.mj-cta-card {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			gap: .5rem;
+			text-decoration: none;
+			padding: 1.3rem;
+			border-radius: 22px;
+			background:
+			linear-gradient(
+				135deg,
+				rgba(255,255,255,.05),
+				rgba(255,255,255,.02)
+			);
+			border: 1px solid rgba(255,255,255,.08);
+			transition:
+			transform .35s ease,
+			border-color .35s ease,
+			background .35s ease;
+		}
+		.mj-cta-card:hover {
+			transform: translateY(-6px);
+			border-color: rgba(111,175,176,.45);
+			background:
+			linear-gradient(
+				135deg,
+				rgba(111,175,176,.12),
+				rgba(255,255,255,.03)
+			);
+		}
+		.mj-cta-card strong {
+			color: #ffffff;
+			font-size: 1rem;
+		}
+		.mj-cta-card span {
+			color: rgba(255,255,255,.72);
+			font-size: .92rem;
+			line-height: 1.6;
 		}
 	</style>
 
@@ -2090,7 +2247,7 @@
 
 		const socialMediaHTML = `
 			<article class="social-grid-wrapper">
-				<p>Escolha o canal de sua preferência para um atendimento imediato:</p>
+				<p>Conecte-se comigo agora:</p>
 				<article class="contact-grid-wrapper">
 					<div class="contact-container">
 						<a href="tel:+5521983251504" class="contact-item">
@@ -2120,7 +2277,7 @@
 					</div>
 				</article>
 				<article class="redesSociais">
-					<p>Clique e acesse minhas Redes Sociais</p>
+					<p>Acesse minhas Redes Sociais</p>
 					<div class="social-container">
 						<a href="https://www.facebook.com/mauricio.jun.ti" target="_blank" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
 						<a href="https://www.youtube.com/channel/UCBu0o1Qgq-hNUo7eL4vdLRg" target="_blank" class="social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
@@ -2155,87 +2312,128 @@
 
 		const sectionsData = {
 			INICIO: {
-				title: "Cartão Digital Inteligente",
-				subtitle: "Muito além de um link — uma ferramenta real de geração de negócios",
+				title: "Mauricio Jun",
+				subtitle: "Transformando ideias em resultados digitais.",
 				image: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.gif",
 				video: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.mp4",
 				content: `
-							<p><strong>Se o seu contato ainda depende de salvar número, você já está perdendo oportunidades.</strong></p>
-
-							<p>O cartão de visita digital que desenvolvemos é um <strong>ativo estratégico</strong>, projetado para transformar visitantes em contatos e contatos em oportunidades.</p>
-
-							<ul>
-								<li>Contato imediato via WhatsApp, telefone e e-mail</li>
-								<li>Links organizados para redes sociais e serviços</li>
-								<li>Compartilhamento ilimitado via link ou QR Code</li>
-								<li>Otimização para aparecer no Google (SEO)</li>
-								<li>Design exclusivo com suas fotos, vídeos e logotipo</li>
-								<li>Métricas completas com Google Analytics</li>
-							</ul>
-
-							<p><strong>O cartão de visita digital de Mauricio Jun vai muito além de um simples link na bio.</strong></p>
-							<p>Ele é um verdadeiro <strong>hub de negócios</strong>: instalável no celular como um <strong>Aplicativo Web Progressivo (PWA)</strong> e acessado como um app, personalizado com a sua identidade visual e otimizado para gerar contatos qualificados.</p>
-
-							<p><strong>Mais visibilidade, mais profissionalismo e mais resultados.</strong></p>
-							<p>Seja você um autônomo, profissional liberal ou empresa, esta é a ferramenta que faltava para transformar cada aperto de mão em uma oportunidade real.</p>
-
-							<p style="text-align:center;">
-							<a onclick="changeContent('CONTATOS')" class="calltoaction">👉</a> <a onclick="changeContent('CONTATOS')" class="calltoaction">Quero meu cartão de visita digital</a>
-							</p>
+							<p></p>
 						`
 			},
 
 			QUEM_SOU: {
-				title: "Sobre Mauricio Jun",
-				subtitle: "Especialista em Tecnologia e Estratégia Digital",
-				image: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v04.png",
+				title: "Sua Marca Merece Exclusividade",
+				subtitle: "Mais presença, mais destaque e mais sofisticação digital.",
+				image: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-sobre-v02.png",
 				video: "",
 				content: `
-							<p><strong>Sou Mauricio Jun</strong>, especialista em tecnologia, marketing digital e desenvolvimento de soluções estratégicas.</p>
+					<div style="text-align: left;">
 
-							<p>Minha missão é ajudar profissionais e empresas a transformarem sua presença digital em <strong>resultados concretos</strong>.</p>
+						<p>Em um cenário onde quase tudo parece igual, <strong>destacar-se se tornou essencial</strong>. Um Cartão de Visitas Digital personalizado vai muito além de compartilhar contatos — ele representa <strong>sua imagem, sua marca e a forma como você deseja ser lembrado</strong>. Enquanto o papel é descartável e limitado, sua presença digital é <strong>dinâmica, interativa e feita para converter curiosidade em parcerias reais</strong>. No mercado de alta performance, o <i>networking</i> é <strong>sua maior moeda</strong>.</p>
 
-							<p>Com experiência em desenvolvimento web, SEO e análise de dados, crio soluções que vão além da estética — focadas em visibilidade, posicionamento e conversão.</p>
+						<p>Com um visual moderno, interativo e exclusivo, sua apresentação transmite mais <strong>profissionalismo, credibilidade e presença</strong> tanto no digital quanto presencialmente. Seja em um evento exclusivo ou em uma reunião de negócios, tenha a segurança de que <strong>sua imagem está à altura da sua ambição</strong>.</p>
 
-							<p>O cartão de visita digital é hoje uma das ferramentas mais eficientes para networking e geração de oportunidades.</p>
+						<div style="background: rgba(0,0,0,0.4); padding: 1em; border-radius: 20px; margin: 1.5em 0; border-left: 4px solid var(--contacts-border-color);">
+							<p style="margin-bottom: 0; font-style: italic; text-align: center;">
+								"Mais do que praticidade, <strong>ele entrega impacto</strong>."
+							</p>
+						</div>
 
-							<h3 style="color:var(--newtitle-color); margin-top:1em;">Mauricio Jun</h3>
-							<div class="mj-carousel-container" id="carousel-quem-sou">
-								<div class="mj-carousel-viewport">
-									<div class="mj-carousel-track">
-										<div class="mj-carousel-item">
-											<div class="mj-image-wrapper">
-												<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.png" alt="Minha Trajetória Profissional" class="mj-carousel-img">
-												<div class="mj-carousel-caption">Minha Trajetória Profissional</div>
-											</div>
-										</div>
-										<div class="mj-carousel-item">
-											<div class="mj-image-wrapper">
-												<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-e-logo-v08.png" alt="Especialista em Tecnologia" class="mj-carousel-img">
-												<div class="mj-carousel-caption">Especialista em Tecnologia</div>
-											</div>
-										</div>
-										<div class="mj-carousel-item">
-											<div class="mj-image-wrapper">
-											<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-clientes-v13.png" alt="Inovação e Design" class="mj-carousel-img">
-												<div class="mj-carousel-caption">Inovação e Design</div>
-											</div>
-										</div>
-										<div class="mj-carousel-item">
-											<div class="mj-image-wrapper">
-											<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v14.png" alt="Solicite já o seu cartão" class="mj-carousel-img">
-												<div class="mj-carousel-caption">Solicite já o seu cartão</div>
-											</div>
-										</div>
-									</div>
-								</div>
+						<p>Integre WhatsApp, redes sociais, portfólio, localização e serviços em uma <strong>experiência elegante, dinâmica e acessível em poucos toques</strong>. Tudo pensado para valorizar sua identidade e fortalecer sua presença profissional.</p>
 
-								<button class="mj-carousel-nav mj-prev" aria-label="Anterior">&#10094;</button>
-								<button class="mj-carousel-nav mj-next" aria-label="Próximo">&#10095;</button>
+						<p>Hoje, quem investe em uma apresentação digital inteligente conquista <strong>mais destaque, mais percepção de valor e mais relevância</strong> diante do público.</p>
 
-								<div class="mj-carousel-dots"></div>
+						<div style="background: rgba(0,0,0,0.4); padding: 1em; border-radius: 20px; margin: 1.5em 0; border-left: 4px solid var(--contacts-border-color);">
+							<p style="margin-bottom: 0; font-style: italic; text-align: center;">
+								“Porque não basta apenas estar online. <strong>É preciso impressionar!</strong>”
+							</p>
+						</div>
+
+						<h3 style="color: var(--newtitle-color); margin-top: 0.5em;">Por que ter um Cartão Digital Premium?</h3>
+
+						<div class="mj-highlight-box">
+							<div class="mj-highlight-item">
+								<span>✔</span>
+								<p>Design totalmente personalizado</p>
 							</div>
-						`
+
+							<div class="mj-highlight-item">
+								<span>✔</span>
+								<p>Mais destaque e valorização profissional</p>
+							</div>
+
+							<div class="mj-highlight-item">
+								<span>✔</span>
+								<p>Compartilhamento rápido e sofisticado</p>
+							</div>
+
+							<div class="mj-highlight-item">
+								<span>✔</span>
+								<p>Integração com WhatsApp, redes sociais e serviços</p>
+							</div>
+
+							<div class="mj-highlight-item">
+								<span>✔</span>
+								<p>Visual moderno que impressiona no digital e presencial</p>
+							</div>
+
+							<div class="mj-highlight-item">
+								<span>✔</span>
+								<p>Instala como app nativo: ícone na tela inicial, acesso offline</p>
+							</div>
+
+							<div class="mj-highlight-item">
+								<span>✔</span>
+								<p>Link profissional: use seu próprio domínio ou subdomínio</p>
+							</div>
+
+							<div class="mj-highlight-item">
+								<span>✔</span>
+								<p>SEO + Analytics: seja encontrado no Google e meça cada clique</p>
+							</div>
+						</div>
+
+						<p>Resultado: você <strong>transmite autoridade, modernidade e cuidado com os detalhes</strong>. Seja em um evento de networking, no seu perfil do Instagram ou no rodapé do e-mail, seu cartão impressiona <strong>antes mesmo da conversa começar</strong>.</p>
+
+						<div class="mj-cta-links">
+
+							<a href="#vantagens" class="mj-cta-card" onclick="changeContent('SOLUCAO'); return false;">
+								<strong>Explore a solução completa</strong>
+								<span>Seu cartão digital como uma plataforma profissional completa.</span>
+								<span style="color: var(--call-to-action-link); text-decoration: none;">Clique aqui!</span>
+							</a>
+
+							<a href="#vantagens" class="mj-cta-card" onclick="changeContent('VANTAGENS'); return false;">
+								<strong>Descubra as Vantagens</strong>
+								<span>Veja como um cartão digital pode elevar sua presença.</span>
+								<span style="color: var(--call-to-action-link); text-decoration: none;">Clique aqui!</span>
+							</a>
+
+							<a href="#portfolio" class="mj-cta-card" onclick="changeContent('COMO_FUNCIONA'); return false;">
+								<strong>Entenda como funciona</strong>
+								<span>Simples para o usuário, poderoso para o seu negócio.</span>
+								<span style="color: var(--call-to-action-link); text-decoration: none;">Clique aqui!</span>
+							</a>
+
+							<a href="#contato" class="mj-cta-card" onclick="changeContent('CONTATOS'); return false;">
+								<strong>Solicite o Seu</strong>
+								<span>Transforme sua apresentação em algo memorável.</span>
+								<span style="color: var(--call-to-action-link); text-decoration: none;">Clique aqui!</span>
+							</a>
+
+						</div>
+
+						<hr style="border-color: var(--top-line-border); margin: 1.5em 0;">
+
+						<!-- Mini bio + link -->
+						<div style="text-align: center;">
+							<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v09.png" alt="Mauricio Jun" style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--contacts-border-color); margin-bottom: 0.5em;">
+							<p style="font-size: 0.9em;">Criado por <strong>Mauricio Jun Handa</strong>, especialista em tecnologia e estratégias digitais.</p>
+							<p style="font-size: 0.85em;">📌 Saiba mais sobre meu trabalho: <a href="https://mauriciojun-ti.blogspot.com/" target="_blank" rel="noopener noreferrer" style="color: var(--call-to-action-link);">mauriciojun-ti.blogspot.com</a></p>
+						</div>
+
+					</div>
+				`
 			},
 
 			SOLUCAO: {
@@ -2891,6 +3089,7 @@
 			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-cartao-digital-modelo-03.png',
 			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-cartao-digital-modelo-04.png',
 			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-qrcode.png',
+			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-sobre-v02.png',
         ];
 
         // Use Promise.all to wait for all images to load
@@ -3811,6 +4010,133 @@
 				setTimeout(addFormButtonToContacts, 500);
 			});
 		})();
+	</script>
+	<script>
+		(function() {
+			"use strict";
+
+			// Cria o indicador dentro de cada .text-wrapper (se não existir)
+			function createIndicators() {
+				document.querySelectorAll('.text-wrapper').forEach(wrapper => {
+					if (wrapper.querySelector('.scroll-indicator')) return;
+					const indicator = document.createElement('div');
+					indicator.className = 'scroll-indicator';
+					indicator.innerHTML = '<span><i class="fa-solid fa-grip-lines"></i></span>';
+					wrapper.appendChild(indicator);
+				});
+			}
+
+			// Atualiza visibilidade do indicador baseado no scroll do .section-content (mãe)
+			function updateIndicators() {
+				document.querySelectorAll('.section-content').forEach(container => {
+					const wrapper = container.querySelector('.text-wrapper');
+					if (!wrapper) return;
+					const indicator = wrapper.querySelector('.scroll-indicator');
+					if (!indicator) return;
+
+					const hasOverflow = container.scrollHeight > container.clientHeight;
+					const isAtBottom = container.scrollTop + container.clientHeight >= container.scrollHeight - 5;
+
+					if (hasOverflow && !isAtBottom) {
+						indicator.classList.add('visible');
+					} else {
+						indicator.classList.remove('visible');
+					}
+				});
+			}
+
+			// Vincula evento de scroll a cada .section-content
+			function bindScrollEvents() {
+				document.querySelectorAll('.section-content').forEach(container => {
+					if (container._scrollHintBound) return;
+					container.addEventListener('scroll', () => updateIndicators());
+					container._scrollHintBound = true;
+				});
+			}
+
+			// Clique no indicador rola suavemente até o final do conteúdo
+			function bindIndicatorClicks() {
+				document.querySelectorAll('.text-wrapper').forEach(wrapper => {
+					const indicator = wrapper.querySelector('.scroll-indicator');
+					if (!indicator || indicator._clickBound) return;
+					const container = wrapper.closest('.section-content');
+					if (!container) return;
+					indicator.addEventListener('click', (e) => {
+						e.stopPropagation();
+						container.scrollTo({
+							top: container.scrollHeight,
+							behavior: 'smooth'
+						});
+					});
+					indicator._clickBound = true;
+				});
+			}
+
+			// Inicialização completa
+			function init() {
+				createIndicators();
+				bindScrollEvents();
+				bindIndicatorClicks();
+				updateIndicators();
+			}
+
+			// Observa trocas de conteúdo (changeContent, carrosséis, embeds)
+			const observer = new MutationObserver(() => {
+				setTimeout(() => init(), 100);
+			});
+			observer.observe(document.body, { childList: true, subtree: true });
+
+			// Hook na função changeContent original (se existir)
+			if (typeof window.changeContent === 'function') {
+				const originalChangeContent = window.changeContent;
+				window.changeContent = function(key) {
+					originalChangeContent(key);
+					setTimeout(() => init(), 150);
+				};
+			}
+
+			// Inicializa quando o DOM estiver pronto
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', init);
+			} else {
+				init();
+			}
+		})();
+
+		/* =========================================================
+		MICRO INTERAÇÕES PREMIUM
+		========================================================= */
+
+		document.querySelectorAll('.mj-cta-card').forEach(card => {
+
+			card.addEventListener('mousemove', (e) => {
+
+				const rect = card.getBoundingClientRect();
+
+				const x = e.clientX - rect.left;
+				const y = e.clientY - rect.top;
+
+				card.style.background = `
+				radial-gradient(
+					circle at ${x}px ${y}px,
+					rgba(111,175,176,.18),
+					rgba(255,255,255,.03) 45%
+				)`;
+
+			});
+
+			card.addEventListener('mouseleave', () => {
+
+				card.style.background = `
+				linear-gradient(
+					135deg,
+					rgba(255,255,255,.05),
+					rgba(255,255,255,.02)
+				)`;
+
+			});
+
+		});
 	</script>
 </body>
 </html>

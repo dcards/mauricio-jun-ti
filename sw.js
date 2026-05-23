@@ -93,7 +93,8 @@ var urlsToCache = [
 	'./imgs/mauricio-jun-ti-cartao-digital-modelo-02.png',
 	'./imgs/mauricio-jun-ti-cartao-digital-modelo-03.png',
 	'./imgs/mauricio-jun-ti-cartao-digital-modelo-04.png',
-	'./imgs/mauricio-jun-ti-qrcode.png'
+	'./imgs/mauricio-jun-ti-qrcode.png',
+	'./imgs/mauricio-jun-ti-sobre-v02.png'
 ];
 self.addEventListener('install', (event) => {
 	event.waitUntil( // Ensures the service worker doesn't finish installing until all files are cached
