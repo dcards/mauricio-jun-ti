@@ -4012,20 +4012,15 @@
 			const overlay = document.getElementById('form-overlay-unique');
 			const closeBtn = document.querySelector('#form-overlay-unique .close-form');
 
+			// --- FUNÇÕES ORIGINAIS (não alterar) ---
 			function openOverlay() {
 				if (overlay) overlay.classList.add('active');
 				window.addEventListener('message', function(event) {
-					// Garante que a mensagem está vindo do HubSpot
 					if (event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormReady') {
-						
-						// O HubSpot envia o ID do formulário nas propriedades do evento
 						const idDoFormCarregado = event.data.id;
 						const meuTargetFormId = "ca81e323-216b-439b-87d4-56166c8882d1-e48cbbb8-e8d2-4ecd-bd90-d182928344c7";
-
-						// Verifica se o ID bate (ou se faz parte do ID composto do HubSpot)
 						if (meuTargetFormId.includes(idDoFormCarregado)) {
 							console.log(`Confirmado via Evento: O formulário ${idDoFormCarregado} está pronto e ativo no iframe!`);
-							// Execute sua lógica aqui (ex: liberar um botão, disparar um pixel, etc.)
 						}
 					}
 				});
@@ -4035,14 +4030,13 @@
 				if (overlay) overlay.classList.remove('active');
 			}
 
-			// Fecha ao clicar no "X"
 			if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
-			// Fecha ao clicar fora do conteúdo (no fundo escuro)
 			if (overlay) overlay.addEventListener('click', function(e) {
 				if (e.target === overlay) closeOverlay();
 			});
+			// --- FIM DAS FUNÇÕES ORIGINAIS ---
 
-			// Adiciona o botão "Formulário de contato" na seção CONTATOS
+			// --- FUNÇÃO CORRIGIDA DE INSERÇÃO DO BOTÃO ---
 			function addFormButtonToContacts() {
 				document.querySelectorAll('.forminsert').forEach(container => {
 					if (container.querySelector('.btn-form-contato')) return;
@@ -4052,54 +4046,30 @@
 					btn.onclick = (e) => {
 						e.preventDefault();
 						e.stopPropagation();
-						const overlay = document.getElementById('form-overlay-unique');
-						if (overlay) overlay.classList.add('active');
+						openOverlay();  // usa a função original
 					};
 					container.appendChild(btn);
+					console.log('✅ Botão inserido em .forminsert');
 				});
 			}
 
-			// Hook no changeContent
+			// --- HOOK ÚNICO NO changeContent (preserva o flip) ---
 			const originalChangeContent = window.changeContent;
 			if (typeof originalChangeContent === 'function') {
 				window.changeContent = function(key) {
 					originalChangeContent(key);
-					if (key === 'CONTATOS') setTimeout(addFormButtonToContacts, 150);
+					if (key === 'CONTATOS') {
+						setTimeout(addFormButtonToContacts, 200);
+					}
 				};
 			}
 
-			// Carregamento inicial
+			// --- TAMBÉM NO CARREGAMENTO INICIAL ---
 			if (document.readyState === 'loading') {
 				document.addEventListener('DOMContentLoaded', () => setTimeout(addFormButtonToContacts, 500));
 			} else {
 				setTimeout(addFormButtonToContacts, 500);
 			}
-
-			// Intercepta a função changeContent para fechar o overlay ao trocar de seção
-			const originalChangeContent = window.changeContent;
-			if (typeof originalChangeContent === 'function') {
-				window.changeContent = function(key) {
-				closeOverlay();               // fecha o formulário ao trocar de seção
-				originalChangeContent(key);
-				if (key === 'CONTATOS') {
-					setTimeout(addFormButtonToContacts, 150);
-				}
-				};
-			} else {
-				// Fallback com MutationObserver
-				const observer = new MutationObserver(() => {
-				if (document.getElementById('content-front') && document.getElementById('content-back')) {
-					addFormButtonToContacts();
-					observer.disconnect();
-				}
-				});
-				observer.observe(document.body, { childList: true, subtree: true });
-			}
-
-			// Adiciona o botão caso a seção atual já seja CONTATOS
-			window.addEventListener('DOMContentLoaded', () => {
-				setTimeout(addFormButtonToContacts, 500);
-			});
 		})();
 	</script>
 	<script>
