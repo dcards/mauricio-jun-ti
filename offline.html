@@ -3469,43 +3469,72 @@
 	<script>
 		(function() {
 			'use strict';
-
+		
 			// Mapeamento dos parâmetros para os códigos de idioma
 			const langMap = {
 				'pt': 'pt', 'por': 'pt', 'portuguese': 'pt',
 				'en': 'en', 'eng': 'en', 'english': 'en', 'eg': 'en',
 				'es': 'es', 'esp': 'es', 'spanish': 'es'
 			};
-
+		
 			// Função para obter o valor de um cookie
 			function getCookie(name) {
 				const value = `; ${document.cookie}`;
 				const parts = value.split(`; ${name}=`);
 				if (parts.length === 2) return parts.pop().split(';').shift();
 			}
-
+		
+			// Função para remover o parâmetro googletrans da URL e recarregar
+			function removeGoogletransParamAndReload() {
+				const url = new URL(window.location.href);
+				if (url.searchParams.has('googletrans') || url.searchParams.has('googleTrans')) {
+					url.searchParams.delete('googletrans');
+					url.searchParams.delete('googleTrans');
+					window.location.replace(url.toString());
+				}
+			}
+		
+			// Função para extrair o idioma do cookie googtrans e atualizar as bandeiras
+			function updateFlagsFromCookie() {
+				const googtrans = getCookie('googtrans');
+				if (!googtrans) return;
+				// O cookie tem o formato: /auto/pt, /auto/en, /auto/es
+				const match = googtrans.match(/\/auto\/(pt|en|es)/);
+				if (match && typeof updateAllFlags === 'function') {
+					const lang = match[1];
+					updateAllFlags(lang);
+					console.log(`🏁 Bandeiras atualizadas com base no cookie: ${lang}`);
+				}
+			}
+		
 			// 1. Obtém o parâmetro 'googletrans' da URL
 			const urlParams = new URLSearchParams(window.location.search);
 			let langParam = urlParams.get('googletrans');
 			if (!langParam) langParam = urlParams.get('googleTrans');
-
+		
 			let targetLang = null;
 			if (langParam) {
 				const normalized = langParam.toLowerCase();
 				targetLang = langMap[normalized] || null;
 			}
-
-			// 2. Se um idioma válido foi encontrado e o cookie ainda não está definido para ele
+		
+			// 2. Se um idioma válido foi encontrado na URL
 			if (targetLang) {
 				const currentGoogTrans = getCookie('googtrans');
 				const expectedCookie = `/auto/${targetLang}`;
-
+		
 				if (currentGoogTrans !== expectedCookie) {
-					// Define o cookie 'googtrans' com o idioma de destino
+					// Define o cookie com o idioma de destino
 					document.cookie = `googtrans=${expectedCookie}; path=/; domain=${window.location.hostname}`;
-					// Recarrega a página para que o Google Translate aplique a tradução
-					window.location.reload();
+					// Recarrega a página sem o parâmetro na URL (evita loop)
+					removeGoogletransParamAndReload();
+				} else {
+					// Cookie já está correto, apenas remove o parâmetro da URL
+					removeGoogletransParamAndReload();
 				}
+			} else {
+				// 3. Se não há parâmetro na URL, apenas atualiza as bandeiras baseado no cookie existente
+				updateFlagsFromCookie();
 			}
 		})();
 	</script>
@@ -4197,48 +4226,6 @@
 			});
 
 		});
-	</script>
-	<script>
-		(function() {
-			'use strict';
-		
-			// 1. Mapeamento dos valores aceitos no parâmetro 'googletrans'
-			const langMap = {
-				'pt': 'pt', 'por': 'pt', 'portuguese': 'pt',
-				'en': 'en', 'eng': 'en', 'english': 'en', 'eg': 'en',  // 'eg' conforme exemplo do cliente
-				'es': 'es', 'esp': 'es', 'spanish': 'es'
-			};
-		
-			// 2. Obtém o parâmetro da URL (case-insensitive)
-			const urlParams = new URLSearchParams(window.location.search);
-			let langParam = urlParams.get('googletrans');
-			if (!langParam) langParam = urlParams.get('googleTrans'); // fallback alternativo
-		
-			let targetLang = null;
-			if (langParam) {
-				const normalized = langParam.toLowerCase();
-				targetLang = langMap[normalized] || null;
-			}
-		
-			if (!targetLang) return; // sem parâmetro válido → nada faz
-		
-			// 3. Aguarda o seletor do Google Translate estar disponível no DOM
-			let attempts = 0;
-			const maxAttempts = 50; // ~5 segundos (100ms cada)
-			const interval = setInterval(() => {
-				attempts++;
-				const selectElement = document.querySelector('.goog-te-combo');
-				if (selectElement && typeof translateLanguage === 'function') {
-					clearInterval(interval);
-					// Aplica a tradução para o idioma desejado
-					translateLanguage(targetLang);
-					console.log(`🌐 Idioma inicial definido via URL: ${targetLang}`);
-				} else if (attempts >= maxAttempts) {
-					clearInterval(interval);
-					console.warn('⚠️ Google Translate não carregou a tempo. Parâmetro ignorado.');
-				}
-			}, 100);
-		})();
 	</script>
 </body>
 </html>
