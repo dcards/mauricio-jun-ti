@@ -2709,9 +2709,7 @@
 							<p style="text-align: center; border-bottom: 1px dashed var(--call-to-action-link); padding-bottom: 1em;">
 								<a href="https://wa.me/5521983251504?text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+os+cart%C3%B5es+digitais" target="_blanck" style="display: inline-block; background: linear-gradient(135deg, #D6BA84, #B8963E); color: #000; padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; font-weight: bold; border-bottom: none;">💎 Quero o meu agora</a>
 							</p>
-							<!-- p style="text-align:center;">
-								<a href="https://wa.me/5521983251504" class="calltoaction">👉</a> <a href="https://wa.me/5521983251504" class="calltoaction">Fale com Mauricio no WhatsApp</a>
-							</p -->
+							<div class="forminsert"></div>
 						`
 			}
         };
@@ -4033,44 +4031,35 @@
 
 			// Adiciona o botão "Formulário de contato" na seção CONTATOS
 			function addFormButtonToContacts() {
-				const frontContent = document.getElementById('content-front');
-				const backContent = document.getElementById('content-back');
-
-				const processContent = (contentDiv) => {
-				if (!contentDiv) return;
-				if (contentDiv.querySelector('.btn-form-contato')) return;
-
-				const whatsappLink = contentDiv.querySelector('a[href*="wa.me"]');
-				if (whatsappLink) {
-					const parentP = whatsappLink.closest('p');
-					const button = document.createElement('button');
-					button.textContent = 'Formulário de contato';
-					button.className = 'btn-form-contato';
-					button.onclick = (e) => {
-					e.preventDefault();
-					e.stopPropagation();
-					openOverlay();
-					};
-					if (parentP) parentP.insertAdjacentElement('afterend', button);
-					else whatsappLink.insertAdjacentElement('afterend', button);
-				} else {
-					const textWrapper = contentDiv.querySelector('.text-wrapper');
-					if (textWrapper && !textWrapper.querySelector('.btn-form-contato')) {
-					const button = document.createElement('button');
-					button.textContent = 'Formulário de contato';
-					button.className = 'btn-form-contato';
-					button.onclick = (e) => {
+				document.querySelectorAll('.forminsert').forEach(container => {
+					if (container.querySelector('.btn-form-contato')) return;
+					const btn = document.createElement('button');
+					btn.textContent = 'Formulário de contato';
+					btn.className = 'btn-form-contato';
+					btn.onclick = (e) => {
 						e.preventDefault();
 						e.stopPropagation();
-						openOverlay();
+						const overlay = document.getElementById('form-overlay-unique');
+						if (overlay) overlay.classList.add('active');
 					};
-					textWrapper.appendChild(button);
-					}
-				}
-				};
+					container.appendChild(btn);
+				});
+			}
 
-				processContent(frontContent);
-				processContent(backContent);
+			// Hook no changeContent
+			const originalChangeContent = window.changeContent;
+			if (typeof originalChangeContent === 'function') {
+				window.changeContent = function(key) {
+					originalChangeContent(key);
+					if (key === 'CONTATOS') setTimeout(addFormButtonToContacts, 150);
+				};
+			}
+
+			// Carregamento inicial
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', () => setTimeout(addFormButtonToContacts, 500));
+			} else {
+				setTimeout(addFormButtonToContacts, 500);
 			}
 
 			// Intercepta a função changeContent para fechar o overlay ao trocar de seção
