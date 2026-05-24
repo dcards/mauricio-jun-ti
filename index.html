@@ -4121,21 +4121,14 @@
 		(function() {
 			'use strict';
 
-			// --- 1. CONFIGURAÇÕES ---
+			// Mapeamento dos parâmetros para códigos de idioma
 			const langMap = {
 				'pt': 'pt', 'por': 'pt', 'portuguese': 'pt',
 				'en': 'en', 'eng': 'en', 'english': 'en', 'eg': 'en',
 				'es': 'es', 'esp': 'es', 'spanish': 'es'
 			};
-			let hasReloaded = false; // Evita loops de recarga
 
-			// --- 2. FUNÇÕES AUXILIARES ---
-			function getCookie(name) {
-				const value = `; ${document.cookie}`;
-				const parts = value.split(`; ${name}=`);
-				if (parts.length === 2) return parts.pop().split(';').shift();
-			}
-
+			// Remove o parâmetro googletrans da URL sem recarregar
 			function removeGoogletransParam() {
 				const url = new URL(window.location.href);
 				if (url.searchParams.has('googletrans') || url.searchParams.has('googleTrans')) {
@@ -4145,52 +4138,30 @@
 				}
 			}
 
-			// --- 3. OBTÉM O IDIOMA DA URL ---
+			// Obtém o idioma da URL
 			const urlParams = new URLSearchParams(window.location.search);
 			let langParam = urlParams.get('googletrans') || urlParams.get('googleTrans');
 			let targetLang = langParam ? langMap[langParam.toLowerCase()] || null : null;
 
-			// --- 4. LÓGICA DE TRADUÇÃO AUTOMÁTICA ---
-			if (targetLang && !hasReloaded) {
-				const expectedCookie = `/auto/${targetLang}`;
-				const currentGoogTrans = getCookie('googtrans');
-
-				if (currentGoogTrans !== expectedCookie) {
-					document.cookie = `googtrans=${expectedCookie}; path=/; domain=${window.location.hostname}`;
-					hasReloaded = true;
-					location.reload();
-					return;
-				}
-				removeGoogletransParam();
-			}
-
-			// --- 5. LÓGICA DE ATUALIZAÇÃO DAS BANDEIRAS ---
-			function updateFlagsFromCookie() {
-				const googtrans = getCookie('googtrans');
-				if (!googtrans) return;
-
-				const match = googtrans.match(/\/auto\/(pt|en|es)/);
-				if (match) {
-					const lang = match[1];
-					if (typeof updateAllFlags === 'function') {
-						updateAllFlags(lang);
-						console.log(`🏁 Flags updated based on cookie: ${lang}`);
-					} else {
-						console.warn("updateAllFlags function not available yet.");
+			if (targetLang && typeof translateLanguage === 'function') {
+				let attempts = 0;
+				const maxAttempts = 50; // ~5 segundos
+				const interval = setInterval(() => {
+					attempts++;
+					const selectElement = document.querySelector('.goog-te-combo');
+					if (selectElement && typeof translateLanguage === 'function') {
+						clearInterval(interval);
+						translateLanguage(targetLang);
+						console.log(`🌐 Tradução aplicada via URL: ${targetLang}`);
+						removeGoogletransParam();
+					} else if (attempts >= maxAttempts) {
+						clearInterval(interval);
+						console.warn('⚠️ Google Tradutor não carregou a tempo. Parâmetro ignorado.');
 					}
-				}
+				}, 100);
+			} else if (targetLang) {
+				console.warn('⚠️ Função translateLanguage não disponível no momento.');
 			}
-
-			// Aguarda o carregamento do Google Translate e executa a atualização das bandeiras
-			function waitForTranslate() {
-				if (typeof google !== 'undefined' && google.translate && google.translate.TranslateElement) {
-					updateFlagsFromCookie();
-				} else {
-					setTimeout(waitForTranslate, 200);
-				}
-			}
-
-			waitForTranslate();
 		})();
 	</script>
 </body>
