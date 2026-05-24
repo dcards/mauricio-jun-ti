@@ -4155,5 +4155,47 @@
 
 		});
 	</script>
+	<script>
+		(function() {
+			'use strict';
+
+			// 1. Mapeamento dos valores aceitos no parâmetro 'googletrans'
+			const langMap = {
+				'pt': 'pt', 'por': 'pt', 'portuguese': 'pt',
+				'en': 'en', 'eng': 'en', 'english': 'en', 'eg': 'en',  // 'eg' conforme exemplo do cliente
+				'es': 'es', 'esp': 'es', 'spanish': 'es'
+			};
+
+			// 2. Obtém o parâmetro da URL (case-insensitive)
+			const urlParams = new URLSearchParams(window.location.search);
+			let langParam = urlParams.get('googletrans');
+			if (!langParam) langParam = urlParams.get('googleTrans'); // fallback alternativo
+
+			let targetLang = null;
+			if (langParam) {
+				const normalized = langParam.toLowerCase();
+				targetLang = langMap[normalized] || null;
+			}
+
+			if (!targetLang) return; // sem parâmetro válido → nada faz
+
+			// 3. Aguarda o seletor do Google Translate estar disponível no DOM
+			let attempts = 0;
+			const maxAttempts = 50; // ~5 segundos (100ms cada)
+			const interval = setInterval(() => {
+				attempts++;
+				const selectElement = document.querySelector('.goog-te-combo');
+				if (selectElement && typeof translateLanguage === 'function') {
+					clearInterval(interval);
+					// Aplica a tradução para o idioma desejado
+					translateLanguage(targetLang);
+					console.log(`🌐 Idioma inicial definido via URL: ${targetLang}`);
+				} else if (attempts >= maxAttempts) {
+					clearInterval(interval);
+					console.warn('⚠️ Google Translate não carregou a tempo. Parâmetro ignorado.');
+				}
+			}, 100);
+		})();
+	</script>
 </body>
 </html>
