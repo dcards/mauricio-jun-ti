@@ -4154,7 +4154,9 @@
 			if (targetLang && !hasReloaded) {
 				const expectedCookie = `/auto/${targetLang}`;
 				const currentGoogTrans = getCookie('googtrans');
-				if (!currentGoogTrans) return `/auto/pt`;
+				if (!currentGoogTrans) {
+					currentGoogTrans = `/auto/pt`;	
+				}
 				console.log(currentGoogTrans);
 				console.log(expectedCookie);
 				if (currentGoogTrans !== expectedCookie) {
