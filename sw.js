@@ -1,4 +1,4 @@
-var CACHE_NAME = 'dcard-mauricio-jun-ti-v01-05';
+var CACHE_NAME = 'dcard-mauricio-jun-ti-v01-10';
 var urlsToCache = [
 	/*
 	'/mauricio-jun-ti/',
