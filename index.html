@@ -4162,12 +4162,12 @@
 			if (targetLang) {
 				targetAuxLang = targetLang;
 			}
-			console.log('teste 00 = ' + targetLang);
-			console.log('teste 01 = ' + targetAuxLang);
+			//console.log('teste 00 = ' + targetLang);
+			//console.log('teste 01 = ' + targetAuxLang);
 			if (targetAuxLang) {
 				const expectedCookie = `/auto/${targetAuxLang}`;
-				console.log('teste 02 = ' + currentGoogTrans);
-				console.log('teste 03 = ' + expectedCookie);
+				//console.log('teste 02 = ' + currentGoogTrans);
+				//console.log('teste 03 = ' + expectedCookie);
 				if (currentGoogTrans !== expectedCookie) {
 					// Altera o cookie sem recarregar a página
 					setCookie('googtrans', expectedCookie);

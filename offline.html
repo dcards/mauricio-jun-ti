@@ -4117,28 +4117,24 @@
 	<script>
 		(function() {
 			'use strict';
-		
-			// Mapeamento de parâmetros para idiomas
+
+			var targetAuxLang = 'pt';
 			const langMap = {
 				'pt': 'pt', 'por': 'pt', 'portuguese': 'pt',
 				'en': 'en', 'eng': 'en', 'english': 'en', 'eg': 'en',
 				'es': 'es', 'esp': 'es', 'spanish': 'es'
 			};
-		
-			// Função para obter cookie
+
 			function getCookie(name) {
 				const value = `; ${document.cookie}`;
 				const parts = value.split(`; ${name}=`);
 				if (parts.length === 2) return parts.pop().split(';').shift();
 			}
-		
-			// Função para definir cookie
-			function setCookie(name, value, days) {
-				const expires = days ? `; expires=${new Date(Date.now() + days * 864e5).toUTCString()}` : '';
-				document.cookie = `${name}=${value}${expires}; path=/`;
+
+			function setCookie(name, value) {
+				document.cookie = `${name}=${value}; path=/; max-age=2592000`; // 30 dias
 			}
-		
-			// Remove o parâmetro da URL sem recarregar
+
 			function removeGoogletransParam() {
 				const url = new URL(window.location.href);
 				if (url.searchParams.has('googletrans') || url.searchParams.has('googleTrans')) {
@@ -4147,47 +4143,70 @@
 					window.history.replaceState({}, '', url.toString());
 				}
 			}
-		
-			// 1. Obtém o idioma desejado da URL
+
+			// 1. Garantir que o cookie googtrans exista (idioma padrão = pt)
+			let currentGoogTrans = getCookie('googtrans');
+			if (!currentGoogTrans) {
+				setCookie('googtrans', '/auto/pt');
+				currentGoogTrans = 'pt'; // atualiza para uso imediato
+				console.log('🍪 Cookie padrão (pt) definido.');
+			}
+
+			// 2. Processar o parâmetro da URL (se houver)
 			const urlParams = new URLSearchParams(window.location.search);
 			let langParam = urlParams.get('googletrans') || urlParams.get('googleTrans');
 			let targetLang = langParam ? langMap[langParam.toLowerCase()] : null;
-		
-			// 2. Se não houver parâmetro, apenas atualiza as bandeiras com base no cookie existente
-			if (!targetLang) {
+			if (targetLang) {
+				targetAuxLang = targetLang;
+			}
+			//console.log('teste 00 = ' + targetLang);
+			//console.log('teste 01 = ' + targetAuxLang);
+			if (targetAuxLang) {
+				const expectedCookie = `/auto/${targetAuxLang}`;
+				//console.log('teste 02 = ' + currentGoogTrans);
+				//console.log('teste 03 = ' + expectedCookie);
+				if (currentGoogTrans !== expectedCookie) {
+					// Altera o cookie sem recarregar a página
+					setCookie('googtrans', expectedCookie);
+					console.log(`🍪 Cookie alterado para: ${expectedCookie}`);
+					
+					// Aguarda o widget do Google Translate carregar e então aplica o idioma
+					function applyTranslation() {
+						if (typeof translateLanguage === 'function') {
+							translateLanguage(targetAuxLang);
+							removeGoogletransParam();
+							console.log(`🌐 Tradução aplicada para: ${targetAuxLang}`);
+						} else {
+							setTimeout(applyTranslation, 100);
+						}
+					}
+					applyTranslation();
+				} else {
+					// Cookie já está correto, apenas remove o parâmetro da URL
+					removeGoogletransParam();
+				}
+			}
+
+			// 3. Atualizar bandeiras com base no cookie atual (sem recarregar)
+			function updateFlagsFromCookie() {
 				const googtrans = getCookie('googtrans');
-				const match = googtrans ? googtrans.match(/\/auto\/(pt|en|es)/) : null;
+				if (!googtrans) return;
+				const match = googtrans.match(/\/auto\/(pt|en|es)/);
 				if (match && typeof updateAllFlags === 'function') {
 					updateAllFlags(match[1]);
+					console.log(`🏁 Bandeiras atualizadas: ${match[1]}`);
 				}
-				return;
 			}
-		
-			// 3. Parâmetro existe: verifica o cookie atual
-			const expectedCookie = `/auto/${targetLang}`;
-			const currentCookie = getCookie('googtrans');
-		
-			// 4. Se o cookie já está correto, apenas remove o parâmetro e atualiza as bandeiras
-			if (currentCookie === expectedCookie) {
-				removeGoogletransParam();
-				if (typeof updateAllFlags === 'function') updateAllFlags(targetLang);
-				return;
+
+			function waitForTranslate() {
+				if (typeof google !== 'undefined' && google.translate && google.translate.TranslateElement) {
+					updateFlagsFromCookie();
+				} else {
+					setTimeout(waitForTranslate, 200);
+				}
 			}
-		
-			// 5. Cookie diferente ou ausente: define o cookie e recarrega a página (UMA ÚNICA VEZ)
-			// Usamos sessionStorage para evitar loop infinito (caso o cookie não persista)
-			const reloadKey = 'googtrans_reload';
-			if (sessionStorage.getItem(reloadKey) === 'done') {
-				// Já tentou recarregar uma vez, não tenta novamente para evitar loop
-				console.warn('Recarga já tentada. Abortando para evitar loop.');
-				removeGoogletransParam();
-				return;
-			}
-		
-			// Define o cookie e marca que vamos recarregar
-			setCookie('googtrans', expectedCookie, 30); // expira em 30 dias
-			sessionStorage.setItem(reloadKey, 'done');
-			location.reload();
+
+			waitForTranslate();
 		})();
 	</script>
 </body>
