@@ -383,7 +383,7 @@
             /*width: 95%; max-width: 8rem;*/ aspect-ratio: 1 / 1; border-radius: 50%;
             position: relative; display: flex; justify-content: center; align-items: center; margin-bottom: 1em;
         }
-        .circular-image img { width: 95%; aspect-ratio: 1 / 1; border-radius: 50%; object-fit: cover; margin: 0 auto; }
+        .circular-image img { width: 95%; aspect-ratio: 1 / 1; border-radius: 50%; object-fit: cover; margin: 0 auto; object-position: center top; }
         .circular-image::before, .circular-image::after { content: ''; position: absolute; width: 95%; height: 95%; border-radius: 50%; }
         .circular-image::before { border: 2px solid transparent; border-bottom: 3px solid var(--profile-border-1); border-right: 2px solid var(--profile-border-1); border-left: 1px solid var(--profile-border-1); border-top: 2px solid var(--profile-border-1); animation: rotate 5s linear infinite; filter: drop-shadow(0 0 2px var(--profile-border-1)); z-index: -1; }
         .circular-image::after { border: 2px solid transparent; border-top: 3px solid var(--profile-border-2); border-right: 2px solid var(--profile-border-2); border-left: 1px solid var(--profile-border-2); border-bottom: 2px solid var(--profile-border-2); animation: rotatereverse 5s linear infinite; filter: drop-shadow(0 0 4px var(--profile-border-2)); z-index: -1; }
