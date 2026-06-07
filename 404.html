@@ -50,12 +50,12 @@
 	<!-- RESPONSIVO -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<!-- FAVICON -->
-	<link rel="icon" href="https://dcards.github.io/mauricio-jun-ti/favicon/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="https://dcards.github.io/mauricio-jun-ti/favicon/android-chrome-512x512.png" type="image/png" sizes="16x16"/>
-	<link rel="icon" href="https://dcards.github.io/mauricio-jun-ti/favicon/favicon-96x96.png" sizes="96x96" type="image/png"/>
-	<link rel="icon" href="https://dcards.github.io/mauricio-jun-ti/favicon/favicon.svg" type="image/svg+xml"/>
-	<link rel="shortcut icon" href="https://dcards.github.io/mauricio-jun-ti/favicon/favicon.ico" />
-	<link rel="apple-touch-icon" sizes="180x180" href="https://dcards.github.io/mauricio-jun-ti/favicon/apple-touch-icon.png" />
+	<link rel="icon" href="./favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="./favicon/android-chrome-512x512.png" type="image/png" sizes="16x16"/>
+	<link rel="icon" href="./favicon/favicon-96x96.png" sizes="96x96" type="image/png"/>
+	<link rel="icon" href="./favicon/favicon.svg" type="image/svg+xml"/>
+	<link rel="shortcut icon" href="./favicon/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
 	<meta name="apple-mobile-web-app-title" content="Cartão de Visita Digital Profissional | Mauricio Jun TI" />
 
 	<!-- CANONICAL -->
@@ -64,7 +64,7 @@
 	<!-- OPEN GRAPH (FACEBOOK / WHATSAPP / LINK PREVIEW) -->
 	<meta property="og:title" content="Cartão de Visita Digital Profissional | Mauricio Jun TI">
 	<meta property="og:description" content="Transforme seu contato em uma ferramenta de vendas com um cartão digital personalizado, integrado e otimizado para resultados.">
-	<meta property="og:image" content="https://dcards.github.io/mauricio-jun-ti/imgs/logo-mauricio-jun-ti-cartao-digital-puro-v01-01.png">
+	<meta property="og:image" content="./imgs/logo-mauricio-jun-ti-cartao-digital-puro-v01-01.png">
 	<meta property="og:url" content="https://dcards.github.io/mauricio-jun-ti/">
 	<meta property="og:type" content="website">
 	<meta property="og:locale" content="pt_BR">
@@ -74,7 +74,7 @@
 	<meta name="twitter:url" content="https://dcards.github.io/mauricio-jun-ti/"/>
 	<meta name="twitter:title" content="Cartão de Visita Digital Profissional | Mauricio Jun TI">
 	<meta name="twitter:description" content="Mais que um link: uma ferramenta estratégica para gerar contatos e oportunidades.">
-	<meta name="twitter:image" content="https://dcards.github.io/mauricio-jun-ti/imgs/logo-mauricio-jun-ti-cartao-digital-puro-v01-01.png">
+	<meta name="twitter:image" content="./imgs/logo-mauricio-jun-ti-cartao-digital-puro-v01-01.png">
 
 	<!-- PWA / MOBILE -->
 	<meta name="theme-color" content="#000000">
@@ -87,14 +87,14 @@
 	<meta name="geo.region" content="BR-RJ">
 	<meta name="geo.placename" content="Rio de Janeiro">
 	
-	<link rel="manifest" href="https://dcards.github.io/mauricio-jun-ti/favicon/site.webmanifest" />
+	<link rel="manifest" href="./favicon/site.webmanifest" />
 
-	<link rel='stylesheet' type='text/css' href='https://dcards.github.io/mauricio-jun-ti/css/all.css'/>
-    <link rel='stylesheet' type='text/css' href='https://dcards.github.io/mauricio-jun-ti/css/brands.css'/>
-    <link rel='stylesheet' type='text/css' href='https://dcards.github.io/mauricio-jun-ti/css/fontawesome.css'/>
-    <link rel='stylesheet' type='text/css' href="https://dcards.github.io/mauricio-jun-ti/css/modal.css"/>
+	<link rel='stylesheet' type='text/css' href='./css/all.css'/>
+    <link rel='stylesheet' type='text/css' href='./css/brands.css'/>
+    <link rel='stylesheet' type='text/css' href='./css/fontawesome.css'/>
+    <link rel='stylesheet' type='text/css' href="./css/modal.css"/>
 
-	<link rel="manifest" href="https://dcards.github.io/mauricio-jun-ti/manifest-github.json"/>
+	<link rel="manifest" href="./manifest-github.json"/>
 
 	<link rel="stylesheet" href="//fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" media="all"/>
 
@@ -280,6 +280,21 @@
             margin-bottom: 60px;
             text-align: left;
         }
+
+        .txtbreak {
+			overflow-wrap: break-word; /* Quebra a palavra se passar do limite */
+			word-break: break-all;     /* Força a quebra em navegadores mais antigos */
+			hyphens: auto;             /* Adiciona hifenização se suportado */
+			display: inline-block;     /* Garante que o elemento respeite o fluxo do box */
+			max-width: 100%;
+        }
+
+		ul.checked-list li::marker {
+			content: "✓ "; /* You can also use "✔️" or a hex code like "\2713" */
+			color: #2ecc71; /* Sets the checkmark color */
+			font-size: 1.2em; /* Adjusts the checkmark size */
+			font-weight: bold;
+		}
 
         .text-wrapper h2 { margin-bottom: 15px; color: var(--newtitle-color); text-transform: uppercase; }
         .text-wrapper p { line-height: 1.6; margin-bottom: 1em; text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.7); }
@@ -484,7 +499,7 @@
 		.contact-container {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr); /* 3 colunas por linha */
-			gap: 1.5rem 0.8rem;
+			gap: 0.8rem;
 			width: 100%;
 			justify-content: center;
 		}
@@ -577,7 +592,15 @@
 			width: 100%;
 			justify-content: center; /* Centraliza horizontalmente */
 		}
-
+		/*
+		.social-btn:hover {
+			transform: scale(1.1) translateY(-3px);
+			background-color: #D4AF37;        /* fundo dourado */
+		}
+		.social-btn:hover i {
+			color: #000000;                   /* ícone preto para contraste */
+		}
+		*/
         /* Modal Add To */
 		/* The Modal (background) */
 		.modal {
@@ -744,6 +767,7 @@
 			border-radius: 50%;
 			border: 2px solid var(--content-circular-image-border);
 			margin-left: .5em;
+			object-position: center top;
 		}
 		/* Content List */
 		main.content-area section.section-content ul {
@@ -842,7 +866,7 @@
 		/* Ajuste para telas muito pequenas */
 		@media (max-width: 360px) {
 			.contact-container {
-				gap: 1rem 0.5rem;
+				gap: 0.8rem 0.5rem;
 			}
 		}
 		@media (max-height: 430px) {
@@ -1152,6 +1176,18 @@
 				transform-style: preserve-3d !important;
 			}
 		}
+		@media (orientation: landscape) {
+			/* Insira aqui o CSS para modo paisagem */
+			.video-bg, .bg-layer-img {
+				object-position: 50% 25%;
+			}
+		}
+		@media (min-width: 769px) {
+			/* Insira aqui o CSS para telas grandes */
+			.video-bg, .bg-layer-img {
+				object-position: 50% 25%;
+			}
+		}
 	</style>
 	<style>
 		/* Contentor posicionado abaixo do logo em ambas as faces */
@@ -1393,7 +1429,7 @@
 		.instagram-embed {
 			width: 100% !important;
 			max-width: 560px;
-			margin: 1.5rem auto;
+			margin: 1em auto;
 			position: relative;
 			transform: translateZ(0);
 			backface-visibility: hidden;
@@ -1446,7 +1482,7 @@
 		.facebook-embed {
 			width: 100%;
 			max-width: 100%;
-			margin: 1.5rem auto;
+			margin: 1em auto;
 			position: relative;
 			transform: translateZ(0);
 			backface-visibility: hidden;
@@ -1786,6 +1822,7 @@
 			grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
 			gap: 1em;
 			margin-top: 1em;
+			/*margin-bottom: 1em;*/
 		}
 		.mj-cta-card {
 			position: relative;
@@ -1843,7 +1880,7 @@
 			"name": "Mauricio Jun TI",
 			"jobTitle": "Profissional de Tecnologia e Marketing Digital",
 			"description": "Criação de cartões de visita digitais personalizados com SEO, integração e métricas.",
-			"image": "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v09.png",
+			"image": "./imgs/mauricio-jun-ti-v09.png",
 			"url": "https://dcards.github.io/mauricio-jun-ti/",
 			"sameAs": [
 				"https://wa.me/5521983251504",
@@ -1890,7 +1927,7 @@
 		
 	<script>
 		if (navigator.onLine === false) {
-			location.replace("/mauricio-jun-ti/offline.html");
+			location.replace("./offline.html");
 		}
 	</script>
 </head>
@@ -1910,7 +1947,7 @@
                 <div class="content-limit">
                     <header>
                         <div class="logo-link" onclick="changeContent('INICIO')">
-                            <img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-logo-horizontal-projetos-web-branco-02-negativo.png" alt="Logo">
+                            <img src="./imgs/mauricio-jun-logo-horizontal-projetos-web-branco-02-negativo.png" alt="Logo">
                         </div>
 						<div class="language-selector-container">
 							<div class="flags-wrapper">
@@ -1934,7 +1971,7 @@
                     <aside class="sidebar">
 						<div class="profile-area">
 							<div class="circular-image">
-								<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v09.png" class="profile-pic" alt="Mauricio Jun TI">
+								<img src="./imgs/mauricio-jun-ti-v09.png" class="profile-pic" alt="Mauricio Jun TI">
 							</div>    
 							<div class="tooltip-mask-wrapper">
 								<div class="tooltip-appendix">
@@ -1955,7 +1992,7 @@
 						</div>
 						<div id="shareButtons" class="share-buttons-container share-buttons">
 							<div class="qrcode-wrapper">
-								<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-qrcode.png" alt="QRCode do site" class="qrcode-img">
+								<img src="./imgs/mauricio-jun-ti-qrcode.png" alt="QRCode do site" class="qrcode-img">
 								<span class="qrcode-legend">QRCode do site</span>
 							</div>
 							<ul class="share-menu">
@@ -1982,7 +2019,7 @@
                 <div class="content-limit">
                     <header>
                         <div class="logo-link" onclick="changeContent('INICIO')">
-                            <img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-logo-horizontal-projetos-web-branco-02-negativo.png" alt="Logo">
+                            <img src="./imgs/mauricio-jun-logo-horizontal-projetos-web-branco-02-negativo.png" alt="Logo">
                         </div>
 						<div class="language-selector-container">
 							<div class="flags-wrapper">
@@ -2006,7 +2043,7 @@
                     <aside class="sidebar">
 						<div class="profile-area">
 							<div class="circular-image">
-								<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v09.png" class="profile-pic" alt="Mauricio Jun TI">
+								<img src="./imgs/mauricio-jun-ti-v09.png" class="profile-pic" alt="Mauricio Jun TI">
 							</div>    
 							<div class="tooltip-mask-wrapper">
 								<div class="tooltip-appendix">
@@ -2027,7 +2064,7 @@
 						</div>
 						<div id="shareButtonsBackFace" class="share-buttons-container share-buttons">
 							<div class="qrcode-wrapper">
-								<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-qrcode.png" alt="QRCode do site" class="qrcode-img">
+								<img src="./imgs/mauricio-jun-ti-qrcode.png" alt="QRCode do site" class="qrcode-img">
 								<span class="qrcode-legend">QRCode do site</span>
 							</div>
 							<ul class="share-menu">
@@ -2268,27 +2305,27 @@
 				<p>Conecte-se comigo agora:</p>
 				<article class="contact-grid-wrapper">
 					<div class="contact-container">
-						<a href="tel:+5521983251504" class="contact-item">
+						<a href="tel:+5521983251504" class="contact-item" title="Ligue - Contato">
 							<div class="contact-btn"><i class="fa-solid fa-phone"></i></div>
 							<span class="contact-label">Ligue</span>
 						</a>
-						<a href="https://wa.me/5521983251504?text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+os+cart%C3%B5es+digitais" target="_blank" class="contact-item">
+						<a href="https://wa.me/5521983251504?text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+os+cart%C3%B5es+digitais" target="_blank" class="contact-item" title="WhatsApp - Contato">
 							<div class="contact-btn"><i class="fa-brands fa-whatsapp"></i></div>
 							<span class="contact-label">WhatsApp</span>
 						</a>
-						<a href="https://t.me/MauricioJunHanda?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20cart%C3%B5es%20digitais" target="_blank" class="contact-item">
+						<a href="https://t.me/MauricioJunHanda?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20cart%C3%B5es%20digitais" target="_blank" class="contact-item" title="Telegram - Contato">
 							<div class="contact-btn"><i class="fa-brands fa-telegram"></i></div>
 							<span class="contact-label">Telegram</span>
 						</a>
-						<a href="sms:+5521983251504?body=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20cart%C3%B5es%20digitais" class="contact-item">
+						<a href="sms:+5521983251504?body=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20cart%C3%B5es%20digitais" class="contact-item" title="SMS - Contato">
 							<div class="contact-btn"><i class="fa-solid fa-comment-sms"></i></div>
 							<span class="contact-label">SMS</span>
 						</a>
-						<a href="mailto:mauriciojun.ti@gmail.com?subject=%5B%20Mauricio%20Jun%20Ti%20%7C%20Cart%C3%A3o%20de%20Visita%20Digital%20Profissional%20%5D&body=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20cart%C3%B5es%20digitais." class="contact-item">
+						<a href="mailto:mauriciojun.ti@gmail.com?subject=%5B%20Mauricio%20Jun%20Ti%20%7C%20Cart%C3%A3o%20de%20Visita%20Digital%20Profissional%20%5D&body=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20cart%C3%B5es%20digitais." class="contact-item" title="E-mail - Contato">
 							<div class="contact-btn"><i class="fa-solid fa-envelope"></i></div>
 							<span class="contact-label">E-mail</span>
 						</a>
-						<a href="https://drive.google.com/uc?id=1-LZ2FWYIsN87fppwRqrwD7O_B6KsMAC6&export=download" class="contact-item">
+						<a href="https://drive.google.com/uc?id=1-LZ2FWYIsN87fppwRqrwD7O_B6KsMAC6&export=download" class="contact-item" title="Salvar - Contato">
 							<div class="contact-btn"><i class="fa-solid fa-address-card"></i></div>
 							<span class="contact-label">Salvar</span>
 						</a>
@@ -2303,11 +2340,11 @@
 						<a href="https://twitter.com/MauricioTi" target="_blank" class="social-btn" title="X"><i class="fa-brands fa-x-twitter"></i></a>
 						<a href="https://t.me/MauricioJunHanda" target="_blank" class="social-btn" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
 						<a href="https://www.linkedin.com/in/mauricio-handa-820a2411" target="_blank" class="social-btn" title="Linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
-						<a href="https://mauriciojun-ti.blogspot.com" target="_blank" class="social-btn" title="Linkedin"><i class="fa-solid fa-globe"></i></a>
+						<a href="https://mauriciojun-ti.blogspot.com" target="_blank" class="social-btn" title="Site"><i class="fa-solid fa-globe"></i></a>
 					</div>
 				</article>
 				<div class="nfc-container">
-					<button class="writeNfcBtnClass nfc-button writeNfcBtn" onClick="buttonNFCclicked();">
+					<button class="writeNfcBtnClass nfc-button writeNfcBtn" onClick="buttonNFCclicked();" title="NFC">
 						Gravar Cartão NFC Físico
 					</button>
 					<div class="nfcStatus"></div>
@@ -2321,7 +2358,7 @@
                         <p>
                             Copyleft <i class="fab fa-creative-commons-sa"></i> 
                             <span class="showyear"></span>
-                            <a href="mailto:mauriciojun.ti@gmail.com"><strong>Mauricio Jun</strong></a>. Cópia autorizada!
+                            <a href="https://dcards.github.io/mauricio-jun-ti/" target="_blank" title="Mauricio Jun - Cartão Digital - Rodapé"><strong>Mauricio Jun</strong></a>. Cópia autorizada!
                         </p>
                     </footer>
                 </div>
@@ -2342,8 +2379,8 @@
 			INICIO: {
 				title: "Mauricio Jun",
 				subtitle: "Transformando ideias em resultados digitais.",
-				image: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.gif",
-				video: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.mp4",
+				image: "./imgs/mauricio-jun-ti-v05.gif",
+				video: "./imgs/mauricio-jun-ti-v05.mp4",
 				content: `
 							<p></p>
 						`
@@ -2352,7 +2389,7 @@
 			QUEM_SOU: {
 				title: "Sua Marca Merece Exclusividade",
 				subtitle: "Mais presença, mais destaque e mais sofisticação digital.",
-				image: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-sobre-v02.png",
+				image: "./imgs/mauricio-jun-ti-sobre-v02.png",
 				video: "",
 				content: `
 					<div style="text-align: left;">
@@ -2425,25 +2462,25 @@
 
 						<div class="mj-cta-links">
 
-							<a href="#vantagens" class="mj-cta-card" onclick="changeContent('SOLUCAO'); return false;">
+							<a href="#vantagens" class="mj-cta-card" onclick="changeContent('SOLUCAO'); return false;" title="Sobre: Chamada para - Solução">
 								<strong>Explore a solução completa</strong>
 								<span>Seu cartão digital como uma plataforma profissional completa.</span>
 								<span style="color: var(--call-to-action-link); text-decoration: none;">Clique aqui!</span>
 							</a>
 
-							<a href="#vantagens" class="mj-cta-card" onclick="changeContent('VANTAGENS'); return false;">
+							<a href="#vantagens" class="mj-cta-card" onclick="changeContent('VANTAGENS'); return false;" title="Sobre: Chamada para - Vantagens">
 								<strong>Descubra as Vantagens</strong>
 								<span>Veja como um cartão digital pode elevar sua presença.</span>
 								<span style="color: var(--call-to-action-link); text-decoration: none;">Clique aqui!</span>
 							</a>
 
-							<a href="#portfolio" class="mj-cta-card" onclick="changeContent('COMO_FUNCIONA'); return false;">
+							<a href="#portfolio" class="mj-cta-card" onclick="changeContent('COMO_FUNCIONA'); return false;" title="Sobre: Chamada para - Como funciona">
 								<strong>Entenda como funciona</strong>
 								<span>Simples para o usuário, poderoso para o seu negócio.</span>
 								<span style="color: var(--call-to-action-link); text-decoration: none;">Clique aqui!</span>
 							</a>
 
-							<a href="#contato" class="mj-cta-card" onclick="changeContent('CONTATOS'); return false;">
+							<a href="#contato" class="mj-cta-card" onclick="changeContent('CONTATOS'); return false;" title="Sobre: Chamada para - Contatos">
 								<strong>Solicite o Seu</strong>
 								<span>Transforme sua apresentação em algo memorável.</span>
 								<span style="color: var(--call-to-action-link); text-decoration: none;">Clique aqui!</span>
@@ -2455,7 +2492,7 @@
 
 						<!-- Mini bio + link -->
 						<div style="text-align: center;">
-							<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v09.png" alt="Mauricio Jun" style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--contacts-border-color); margin-bottom: 0.5em; object-fit: cover;">
+							<img src="./imgs/mauricio-jun-ti-v09.png" alt="Mauricio Jun" style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--contacts-border-color); margin-bottom: 0.5em; object-fit: cover;">
 							<p style="font-size: 0.9em;">Criado por <strong>Mauricio Jun Handa</strong>, especialista em tecnologia e estratégias digitais.</p>
 							<p style="font-size: 0.85em;">📌 Saiba mais sobre meu trabalho: <a href="https://mauriciojun-ti.blogspot.com/" target="_blank" rel="noopener noreferrer" style="color: var(--call-to-action-link);">mauriciojun-ti.blogspot.com</a></p>
 						</div>
@@ -2467,7 +2504,7 @@
 			SOLUCAO: {
 				title: "A Solução",
 				subtitle: "Seu cartão digital como uma plataforma profissional completa",
-				image: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v13.png",
+				image: "./imgs/mauricio-jun-ti-v13.png",
 				video: "",
 				content: `
 							<p>Imagine um cartão de visita que nunca expira, pode ser instalado na tela inicial do celular e apresenta sua marca com profissionalismo em qualquer situação.</p>
@@ -2519,31 +2556,31 @@
 									<div class="mj-carousel-track">
 										<div class="mj-carousel-item">
 											<div class="mj-image-wrapper">
-												<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-cartao-digital-mockup.png" alt="Solicite já o seu cartão" class="mj-carousel-img">
+												<img src="./imgs/mauricio-jun-ti-cartao-digital-mockup.png" alt="Solicite já o seu cartão" class="mj-carousel-img">
 												<div class="mj-carousel-caption">Solicite já o seu cartão</div>
 											</div>
 										</div>
 										<div class="mj-carousel-item">
 											<div class="mj-image-wrapper">
-												<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-cartao-digital-modelo-03.png" alt="Solicite já o seu cartão" class="mj-carousel-img">
+												<img src="./imgs/mauricio-jun-ti-cartao-digital-modelo-03.png" alt="Solicite já o seu cartão" class="mj-carousel-img">
 												<div class="mj-carousel-caption">Solicite já o seu cartão</div>
 											</div>
 										</div>
 										<div class="mj-carousel-item">
 											<div class="mj-image-wrapper">
-												<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-cartao-digital-modelo-04.png" alt="Solicite já o seu cartão" class="mj-carousel-img">
+												<img src="./imgs/mauricio-jun-ti-cartao-digital-modelo-04.png" alt="Solicite já o seu cartão" class="mj-carousel-img">
 												<div class="mj-carousel-caption">Solicite já o seu cartão</div>
 											</div>
 										</div>
 										<div class="mj-carousel-item">
 											<div class="mj-image-wrapper">
-												<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-cartao-digital-modelo-02.png" alt="Solicite já o seu cartão" class="mj-carousel-img">
+												<img src="./imgs/mauricio-jun-ti-cartao-digital-modelo-02.png" alt="Solicite já o seu cartão" class="mj-carousel-img">
 												<div class="mj-carousel-caption">Solicite já o seu cartão</div>
 											</div>
 										</div>
 										<div class="mj-carousel-item">
 											<div class="mj-image-wrapper">
-												<img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-cartao-digital-modelo-01.png" alt="Solicite já o seu cartão" class="mj-carousel-img">
+												<img src="./imgs/mauricio-jun-ti-cartao-digital-modelo-01.png" alt="Solicite já o seu cartão" class="mj-carousel-img">
 												<div class="mj-carousel-caption">Solicite já o seu cartão</div>
 											</div>
 										</div>
@@ -2561,10 +2598,10 @@
 			VANTAGENS: {
 				title: "Vantagens Estratégicas",
 				subtitle: "Muito além dos cartões digitais tradicionais",
-				image: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v08.png",
+				image: "./imgs/mauricio-jun-ti-v08.png",
 				video: "",
 				content: `
-							<p><img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-dicas-mobile.png" alt="Vantagens" class="content-right-circular-image">Por que Escolher Nosso Cartão de Visita Digital?</p>
+							<p><img src="./imgs/mauricio-jun-dicas-mobile.png" alt="Vantagens" class="content-right-circular-image">Por que Escolher Nosso Cartão de Visita Digital?</p>
 							<p>Serviços como Linktree, Beacons, Blinq, Popl ou HiHello oferecem praticidade, mas limitam sua marca a um modelo padronizado.</p>
 
 							<p>Elas oferecem:</p>
@@ -2598,10 +2635,10 @@
 			COMO_FUNCIONA: {
 				title: "Como Funciona",
 				subtitle: "Simples para o usuário, poderoso para o seu negócio",
-				image: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v03.png",
+				image: "./imgs/mauricio-jun-ti-v03.png",
 				video: "",
 				content: `
-							<p><img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-sobre-mobile.png" alt="Como funciona" class="content-right-circular-image">O processo de criação do seu cartão digital foi pensado para ser transparente e colaborativo:</p>
+							<p><img src="./imgs/mauricio-jun-sobre-mobile.png" alt="Como funciona" class="content-right-circular-image">O processo de criação do seu cartão digital foi pensado para ser transparente e colaborativo:</p>
 							<ol style="padding-left:2em; margin-bottom:1em; color:var(--text-color);">
 								<li><strong>Briefing:</strong> entendemos sua área de atuação e os objetivos do cartão.</li>
 								<li><strong>Personalização:</strong> reunimos logotipo, fotos, vídeos, cores e textos que representam você ou sua empresa.</li>
@@ -2636,10 +2673,10 @@
 			PARA_QUEM: {
 				title: "Para Quem É",
 				subtitle: "Ideal para profissionais e empresas que querem crescer",
-				image: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v20.png",
+				image: "./imgs/mauricio-jun-ti-v20.png",
 				video: "",
 				content: `
-							<p><img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-portfolio-mobile.png" alt="Para quem" class="content-right-circular-image">Nosso cartão de visita digital é ideal para quem precisa ser encontrado, contatado rapidamente e ter uma presença online profissional:</p>
+							<p><img src="./imgs/mauricio-jun-portfolio-mobile.png" alt="Para quem" class="content-right-circular-image">Nosso cartão de visita digital é ideal para quem precisa ser encontrado, contatado rapidamente e ter uma presença online profissional:</p>
 
 							<ul>
 								<li><strong>Autônomos e prestadores de serviço</strong> (eletricistas, encanadores, designers, consultores).</li>
@@ -2662,10 +2699,10 @@
 			SEO: {
 				title: "Estratégia e Métricas",
 				subtitle: "Decisões baseadas em dados, não em achismo",
-				image: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v10.png",
+				image: "./imgs/mauricio-jun-ti-v10.png",
 				video: "",
 				content: `
-							<p><img src="https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-novidades-mobile.png" alt="Estratégia" class="content-right-circular-image">Com nosso cartão de visita digital, você não fica no escuro. Utilizamos <strong>Google Analytics e Google Tag Manager</strong> para fornecer métricas reais de desempenho.</p>
+							<p><img src="./imgs/mauricio-jun-novidades-mobile.png" alt="Estratégia" class="content-right-circular-image">Com nosso cartão de visita digital, você não fica no escuro. Utilizamos <strong>Google Analytics e Google Tag Manager</strong> para fornecer métricas reais de desempenho.</p>
 							<p><strong>O que você poderá acompanhar:</strong></p>
 							<ul>
 								<li>Quantas pessoas visualizaram seu cartão.</li>
@@ -2715,7 +2752,7 @@
 			CONTATOS: {
 				title: "Contato",
 				subtitle: "Vamos transformar sua presença digital?",
-				image: "https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v02.png",
+				image: "./imgs/mauricio-jun-ti-v02.png",
 				video: "",
 				content: `
 							<p><strong>Seu próximo cliente pode estar a um clique de distância.</strong></p>
@@ -2736,50 +2773,8 @@
                 img.src = sec.image;
             });
         }
-		
-        // --- PERFORMANCE: PRÉ-CARREGAMENTO IMEDIATO ---
-        // Executamos isso logo após a definição dos dados para ganhar tempo de rede.
-		/*
-        (function preloadBGs() {
-            Object.values(sectionsData).forEach(sec => {
-                const img = new Image();
-                img.src = sec.image;
-                // Log opcional para debug do Webmaster: console.log('Preloading:', sec.image);
-				//console.log('Preloading:', sec.image);
-            });
-        })();
-		*/
 
 		function updateBackgroundContent(sectionKey,bgkey) {
-			/*
-			const data = sectionsData[sectionKey];
-			if (!data) return;
-
-			// Seleciona as camadas de fundo de ambas as faces (front e back)
-			const layers = document.querySelectorAll('.bg-layer');
-
-			layers.forEach(layer => {
-				if (data.video && data.video !== "") {
-					// Se houver vídeo, remove a imagem de fundo e insere o elemento video
-					layer.style.backgroundImage = 'none';
-					
-					// Evita reinserir o mesmo vídeo se ele já estiver a correr
-					let videoEl = layer.querySelector('video');
-					if (!videoEl || videoEl.dataset.src !== data.video) {
-						layer.innerHTML = `
-							<video autoplay muted loop playsinline class="video-bg" data-src="${data.video}" poster="${data.image}">
-								<source src="${data.video}" type="video/mp4">
-								<img src="${data.image}" alt="Fallback">
-							</video>
-						`;
-					}
-				} else {
-					// Se não houver vídeo, limpa o HTML e volta para a imagem de fundo
-					layer.innerHTML = '';
-					layer.style.backgroundImage = `url("${data.image}")`;
-				}
-			});
-			*/
 			const data = sectionsData[sectionKey];
 			if (!data) return;
 			const bgid = `${bgkey}`;
@@ -2903,16 +2898,32 @@
             // 2. LÓGICA DE COMPARTILHAMENTO
             const shareTriggers = document.querySelectorAll('.share-trigger');
             const shareMenus = [document.getElementById('shareButtons'), document.getElementById('shareButtonsBackFace')];
+			var shareAuxCount = 0;
 
             shareTriggers.forEach(trigger => {
                 trigger.addEventListener('click', (e) => {
                     e.preventDefault(); e.stopPropagation();
-                    shareMenus.forEach(menu => menu.classList.toggle('show'));
+                    shareMenus.forEach(menu => {
+						menu.classList.toggle('show');
+						const shareEstaAtivo = menu.classList.contains('show');
+						//console.log(shareEstaAtivo);
+						if (shareEstaAtivo) {
+							shareAuxCount++;
+							//console.log(shareAuxCount);
+							if (shareAuxCount == 1) {
+								// Registra no Analytics
+								sendToAnalytics02('Compartilhar','Menus acessados','Card Page');
+							}
+						} else {
+							shareAuxCount = 0;
+						}
+					});
                 });
             });
 
             document.addEventListener('click', () => {
                 shareMenus.forEach(menu => menu.classList.remove('show'));
+				shareAuxCount = 0;
             });
 
             // Configuração dos links de compartilhamento
@@ -2932,6 +2943,8 @@
                             setTimeout(() => tooltip.style.opacity = '0', 2000);
                         });
                     }
+					// Registra no Analytics
+					sendToAnalytics02(platform,'Menu Compartilhar','Card Page');
                 });
             });
         });
@@ -2973,8 +2986,8 @@
 			initCarousels();
 
 			// Marca o ícone de início como ativo (se houver correspondência)
-            //const initialLinks = document.querySelectorAll(`.nav-icons a[onclick*="'INICIO'"]`);
-            //initialLinks.forEach(link => link.classList.add('nav-active'));
+            const initialLinks = document.querySelectorAll(`.nav-icons a[onclick*="'INICIO'"]`);
+            initialLinks.forEach(link => link.classList.add('nav-active'));
 
             showcopyleftyear();
         };
@@ -2989,32 +3002,42 @@
 			console.log('Send to anakytics 02 = ' + userChoice);
 		}
 		
-		function openTab(evt, tabName) {
-			var i, tabcontent, tablinks;
-			tabcontent = document.getElementsByClassName("tabcontent");
-			for (i = 0; i < tabcontent.length; i++) {
-				tabcontent[i].style.display = "none";
-			}
-			tablinks = document.getElementsByClassName("tablinks");
-			for (i = 0; i < tablinks.length; i++) {
-				tablinks[i].className = tablinks[i].className.replace(" active", "");
-			}
-			document.getElementById(tabName).style.display = "block";
-			evt.currentTarget.className += " active";
-			sendToAnalytics02(tabName,'Abas acessadas','Card Page');
-		}
-		
 		window.addEventListener("click", function(e) {
+			/*
+			console.log(e.target.tagName.toLowerCase());
+			console.log(e.target.parentElement.tagName.toLowerCase());
+			console.log(e.target.parentElement.parentElement.tagName.toLowerCase());
+			*/
 			if (e.target.tagName.toLowerCase()==='a') {
 				if (e.target.title) {
 					sendToAnalytics02(e.target.title,'Ícones acessados','Card Page');
 					console.log('Title = ' + e.target.title + ' | Tag Name = ' + e.target.tagName);
 				}
 			}
+			if (e.target.tagName.toLowerCase()==='li') {
+				if (e.target.parentElement.tagName.toLowerCase()==='ul' && e.target.parentElement.classList.contains('overlay-list')) {
+					if (e.target.textContent) {
+						sendToAnalytics02(e.target.textContent,'Menu Completo','Card Page');
+						console.log('Title = ' + e.target.textContent + ' | Tag Name = ' + e.target.tagName);
+					}
+				}
+			}
 			if (e.target.parentElement.tagName.toLowerCase()==='a') {
 				if (e.target.parentElement.title) {
 					sendToAnalytics02(e.target.parentElement.title,'Ícones acessados','Card Page');
 					console.log('Title = ' + e.target.parentElement.title + ' | Tag Name = ' + e.target.parentElement.tagName);
+				}
+			}
+			if (e.target.parentElement.tagName.toLowerCase()==='div') {
+				if (e.target.parentElement.classList.contains('logo-link')) {
+					sendToAnalytics02('Logotipo','Logotipo','Card Page');
+					console.log('Title = Logotipo | Tag Name = ' + e.target.parentElement.tagName);
+				}
+			}
+			if (e.target.parentElement.parentElement.tagName.toLowerCase()==='a') {
+				if (e.target.parentElement.parentElement.title) {
+					sendToAnalytics02(e.target.parentElement.parentElement.title,'Ícones acessados','Card Page');
+					console.log('Title = ' + e.target.parentElement.parentElement.title + ' | Tag Name = ' + e.target.parentElement.parentElement.tagName);
 				}
 			}
 		});
@@ -3093,32 +3116,32 @@
         }
 
         const imageUrlsWithPromises = [
-			'https://dcards.github.io/mauricio-jun-ti/imgs/logo-mauricio-jun-ti-cartao-digital-puro-v01-01.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-clientes-mobile.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-dicas-mobile.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-logo-horizontal-projetos-web-branco-02-negativo.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-novidades-mobile.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-portfolio-mobile.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-sobre-mobile.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v02.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v03.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v04.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.gif',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v08.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v09.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v10.png',
-            'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v13.png',
-            'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v14.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-v20.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-e-logo-v08.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-clientes-v13.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-cartao-digital-mockup.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-cartao-digital-modelo-01.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-cartao-digital-modelo-02.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-cartao-digital-modelo-03.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-cartao-digital-modelo-04.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-qrcode.png',
-			'https://dcards.github.io/mauricio-jun-ti/imgs/mauricio-jun-ti-sobre-v02.png',
+			'./imgs/logo-mauricio-jun-ti-cartao-digital-puro-v01-01.png',
+			'./imgs/mauricio-jun-clientes-mobile.png',
+			'./imgs/mauricio-jun-dicas-mobile.png',
+			'./imgs/mauricio-jun-logo-horizontal-projetos-web-branco-02-negativo.png',
+			'./imgs/mauricio-jun-novidades-mobile.png',
+			'./imgs/mauricio-jun-portfolio-mobile.png',
+			'./imgs/mauricio-jun-sobre-mobile.png',
+			'./imgs/mauricio-jun-ti-v02.png',
+			'./imgs/mauricio-jun-ti-v03.png',
+			'./imgs/mauricio-jun-ti-v04.png',
+			'./imgs/mauricio-jun-ti-v05.gif',
+			'./imgs/mauricio-jun-ti-v08.png',
+			'./imgs/mauricio-jun-ti-v09.png',
+			'./imgs/mauricio-jun-ti-v10.png',
+            './imgs/mauricio-jun-ti-v13.png',
+            './imgs/mauricio-jun-ti-v14.png',
+			'./imgs/mauricio-jun-ti-v20.png',
+			'./imgs/mauricio-jun-ti-e-logo-v08.png',
+			'./imgs/mauricio-jun-ti-clientes-v13.png',
+			'./imgs/mauricio-jun-ti-cartao-digital-mockup.png',
+			'./imgs/mauricio-jun-ti-cartao-digital-modelo-01.png',
+			'./imgs/mauricio-jun-ti-cartao-digital-modelo-02.png',
+			'./imgs/mauricio-jun-ti-cartao-digital-modelo-03.png',
+			'./imgs/mauricio-jun-ti-cartao-digital-modelo-04.png',
+			'./imgs/mauricio-jun-ti-qrcode.png',
+			'./imgs/mauricio-jun-ti-sobre-v02.png',
         ];
 
         // Use Promise.all to wait for all images to load
@@ -3132,33 +3155,6 @@
                 // Handle errors
             });
     </script>
-	<script>
-		/*
-		(function() {
-			// Correção definitiva de altura para Viewport Mobile (Ignora barras do navegador)
-			const vCardViewportFix = () => {
-				const layers = document.querySelectorAll('.bg-layer');
-				const vh = window.innerHeight;
-				layers.forEach(layer => {
-					layer.style.height = `${vh}px`;
-				});
-			};
-
-			// Escuta mudanças de rotação de tela e redimensionamento no smartphone
-			window.addEventListener('resize', vCardViewportFix);
-			window.addEventListener('orientationchange', vCardViewportFix);
-			
-			// Executa assim que a árvore DOM estiver pronta
-			if (document.readyState === 'loading') {
-				document.addEventListener('DOMContentLoaded', vCardViewportFix);
-			} else {
-				vCardViewportFix();
-			}
-
-			console.log("Definitive Cinemagraph & UX Engine Loaded Successfully.");
-		})();
-		*/
-	</script>
 	<script>
 		(function() {
 			// Debounce para o resize não travar a execução
@@ -3217,6 +3213,8 @@
 				trigger.addEventListener('click', (e) => {
 					e.stopPropagation();
 					handleTooltipToggle();
+					// Registra no Analytics
+					sendToAnalytics02('Foto do perfil','Menus acessados','Card Page');
 				});
 			});
 
@@ -3225,164 +3223,6 @@
 		});
 	</script>
 	<script>
-		/* --- CONTROLADOR DE GIRO ESPACIAL --- */
-		/*
-		(function() {
-			const root = document.documentElement;
-			let gyroActive = false;
-
-			function updateSpatialRotation(e) {
-				let beta = e.beta;   // Frente/Trás
-				let gamma = e.gamma; // Esquerda/Direita
-
-				if (beta === null || gamma === null) return;
-
-				// -------------------------
-				// 🎚️ EIXO Y (LATERAL) — CORRIGIDO
-				// -------------------------
-
-				// gamma principal
-				let g = gamma;
-
-				// 🔥 compensação quando gamma perde sensibilidade
-				// quanto mais perto de 0 ou 180 no beta, menos confiável o gamma
-				let betaInfluence = Math.sin((beta * Math.PI) / 180);
-
-				// mistura inteligente
-				g = g * Math.abs(betaInfluence);
-
-				// fallback: se gamma estiver morto, usa parte do beta
-				if (Math.abs(gamma) < 0.1) {
-					g += (beta - 90) * 0.3;
-				}
-
-				// clamp final
-				g = Math.max(-60, Math.min(60, g));
-
-
-				// -------------------------
-				// 🎚️ EIXO X (VERTICAL)
-				// -------------------------
-
-				let b;
-
-				if (beta >= 30 && beta <= 150) {
-					b = beta - 90; // centraliza
-				} else {
-					// mantém continuidade fora da faixa
-					b = (beta > 150) ? 60 : -60;
-				}
-
-				b = Math.max(-60, Math.min(60, b));
-
-
-				// -------------------------
-				// 🧹 ZONA MORTA
-				// -------------------------
-
-				if (Math.abs(g) < 0.2) g = 0;
-				if (Math.abs(b) < 0.2) b = 0;
-
-
-				// -------------------------
-				// 🎯 ROTAÇÃO FINAL
-				// -------------------------
-
-				let finalRotY = -g * 0.7;
-				let finalRotX = -b * 0.7;
-
-
-				// -------------------------
-				// 🎨 CSS (INDEPENDENTE)
-				// -------------------------
-
-				root.style.setProperty('--gyro-rot-x', `${finalRotX.toFixed(2)}deg`);
-				root.style.setProperty('--gyro-rot-y', `${finalRotY.toFixed(2)}deg`);
-
-
-				// DEBUG
-				console.log({
-					beta,
-					gamma,
-					g,
-					b,
-					finalRotX,
-					finalRotY
-				});
-			}
-			
-			async function startGyro() {
-				if (gyroActive) return;
-
-				try {
-					if (
-						typeof DeviceOrientationEvent !== 'undefined' &&
-						typeof DeviceOrientationEvent.requestPermission === 'function'
-					) {
-						const permission = await DeviceOrientationEvent.requestPermission();
-						if (permission !== 'granted') return;
-					}
-
-					window.addEventListener('deviceorientation', updateSpatialRotation);
-					gyroActive = true;
-
-				} catch (err) {
-					console.warn("Acesso ao giroscópio negado.", err);
-				}
-			}
-
-			document.addEventListener('click', startGyro, { once: true });
-			document.addEventListener('touchstart', startGyro, { once: true });
-		})();
-		*/
-		/* --- Lógica de Rotação Baseada em Gamma --- */
-		/*
-		(function() {
-			const root = document.documentElement;
-			let gyroEnabled = false;
-
-			function handleOrientation(event) {
-				let gamma = event.gamma; // Inclinação lateral (-90 a 90)
-
-				// Variável para armazenar o cálculo final
-				let rotationY = 0;
-
-				// Diretrizes: Apenas entre -60 e 60, e diferente de 0
-				if (gamma !== 0 && gamma <= 60 && gamma >= -60) {
-					rotationY = -gamma; 
-				} else {
-					// Casos: gamma=0, gamma > 60 ou gamma < -60
-					rotationY = 0;
-				}
-
-				// Aplica o valor à variável CSS que controla vídeos e imagens
-				root.style.setProperty('--gamma-rot', `${rotationY.toFixed(2)}deg`);
-			}
-
-			// Solicitação de permissão para sensores (iOS 13+)
-			async function initSensors() {
-				if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-					try {
-						const permission = await DeviceOrientationEvent.requestPermission();
-						if (permission === 'granted') {
-							window.addEventListener('deviceorientation', handleOrientation);
-							gyroEnabled = true;
-						}
-					} catch (err) {
-						console.error("Permissão de sensores negada.");
-					}
-				} else {
-					window.addEventListener('deviceorientation', handleOrientation);
-					gyroEnabled = true;
-				}
-			}
-
-			// Ativa os sensores no primeiro clique por exigência de segurança dos browsers
-			document.addEventListener('click', () => {
-				if (!gyroEnabled) initSensors();
-			}, { once: true });
-		})();
-		*/
 		/* --- JS OTIMIZADO: FILTRO DE SENSORES --- */
 		(function() {
 			const root = document.documentElement;
@@ -3434,7 +3274,6 @@
 			}, { once: true });
 		})();
 	</script>
-
 	<script type="text/javascript">
 		function googleTranslateElementInit() {
 			new google.translate.TranslateElement({
@@ -3479,7 +3318,6 @@
 		}
 	</script>
 	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 	<script>
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker.register('./sw.js')
@@ -3487,7 +3325,6 @@
 			.catch(err => console.log("PWA: Erro no registro", err));
 		}
 	</script>
-
 	<script>
 		function initCarousels() {
 			const carousels = document.querySelectorAll('.mj-carousel-container');
@@ -3570,6 +3407,7 @@
 			viewer.style.display = "flex";
 			viewerImg.src = src;
 			captionText.innerHTML = alt || "Sem legenda"; // Usa o atributo ALT como legenda
+			sendToAnalytics02(viewerImg.src,'Carrossel','Card Page');
 		}
 
 		// Fechar ao clicar no X
@@ -3591,66 +3429,11 @@
 			}
 		});
 	</script>
-
 	<script>
-		/*
-		(function() {
-			const nfcButtons = document.querySelectorAll('.writeNfcBtnClass');
-			const nfcStatuses = document.querySelectorAll('.nfcStatus');
-
-			if (nfcButtons.length === 0) {
-				console.warn("NFC: Nenhum botão com a classe '.writeNfcBtnClass' foi encontrado no DOM.");
-				return;
-			}
-
-			const updateStatus = (text) => {
-				nfcStatuses.forEach(el => el.innerText = text);
-				console.log("NFC Status:", text);
-			};
-
-			nfcButtons.forEach(btn => {
-				btn.addEventListener('click', async () => {
-					console.log("NFC: Botão clicado!");
-
-					// 1. Verificação de suporte
-					if (!('NDEFReader' in window)) {
-						alert("Este navegador ou dispositivo não suporta a escrita de NFC via Web API.");
-						updateStatus("⚠️ NFC não suportado aqui.");
-						return;
-					}
-
-					// 2. Verificação de Protocolo Seguro
-					if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
-						alert("A API NFC exige uma conexão segura (HTTPS).");
-						updateStatus("⚠️ Use HTTPS para testar.");
-						return;
-					}
-
-					try {
-						const ndef = new NDEFReader();
-						updateStatus("Aproxime a tag NFC do sensor...");
-						
-						// Inicia a escrita com a URL atual do site
-						await ndef.write(window.location.href);
-						
-						updateStatus("✅ Sucesso! Tag gravada.");
-						alert("Cartão físico programado com sucesso!");
-						
-						setTimeout(() => updateStatus(""), 5000);
-					} catch (error) {
-						console.error("NFC Error:", error);
-						if (error.name === "NotAllowedError") {
-							updateStatus("❌ Permissão negada pelo usuário.");
-						} else {
-							updateStatus("❌ Erro ao gravar. Tente novamente.");
-						}
-					}
-				});
-			});
-		})();
-		*/
 		async function buttonNFCclicked() {
-			console.log("NFC: Botão clicado!");
+			//console.log("NFC: Botão clicado!");
+			// Registra no Analytics
+			sendToAnalytics02('NFC','NFC - Clicado','Card Page');
 
 			const nfcStatuses = document.querySelectorAll('.nfcStatus');
 			const updateStatus = (text) => {
@@ -3662,6 +3445,8 @@
 			if (!('NDEFReader' in window)) {
 				//alert("Este navegador ou dispositivo não suporta a escrita de NFC via Web API.");
 				updateStatus("NFC não suportado aqui.");
+				// Registra no Analytics
+				sendToAnalytics02('NFC não suportado aqui','NFC - Clicado','Card Page');
 				return;
 			}
 
@@ -3681,14 +3466,20 @@
 				
 				updateStatus("Sucesso! Tag gravada.");
 				//alert("Cartão físico programado com sucesso!");
+				// Registra no Analytics
+				sendToAnalytics02('Sucesso! Tag gravada','NFC - Clicado','Card Page');
 				
 				setTimeout(() => updateStatus(""), 5000);
 			} catch (error) {
 				console.error("NFC Error:", error);
 				if (error.name === "NotAllowedError") {
 					updateStatus("Permissão negada pelo usuário.");
+					// Registra no Analytics
+					sendToAnalytics02('Permissão negada pelo usuário','NFC - Clicado','Card Page');
 				} else {
 					updateStatus("Erro ao gravar. Tente novamente.");
+					// Registra no Analytics
+					sendToAnalytics02('Erro ao gravar','NFC - Clicado','Card Page');
 				}
 			}
 		}
@@ -3944,6 +3735,7 @@
 			// --- FUNÇÕES ORIGINAIS (não alterar) ---
 			function openOverlay() {
 				if (overlay) overlay.classList.add('active');
+				sendToAnalytics02('Formulário','Botão','Card Page');
 				window.addEventListener('message', function(event) {
 					if (event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormReady') {
 						const idDoFormCarregado = event.data.id;

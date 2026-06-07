@@ -1,49 +1,5 @@
-var CACHE_NAME = 'dcard-mauricio-jun-ti-v01-12';
+var CACHE_NAME = 'dcard-mauricio-jun-ti-v01-13';
 var urlsToCache = [
-	/*
-	'/mauricio-jun-ti/',
-	'/mauricio-jun-ti/index.html',
-	'/mauricio-jun-ti/offline.html',
-	'/mauricio-jun-ti/404.html',
-	'/mauricio-jun-ti/favicon/android-chrome-512x512.png',
-	'/mauricio-jun-ti/favicon/android-chrome-192x192.png',
-	'/mauricio-jun-ti/css/all.css',
-    '/mauricio-jun-ti/css/brands.css',
-    '/mauricio-jun-ti/css/fontawesome.css',
-    '/mauricio-jun-ti/css/modal.css',
-	'/mauricio-jun-ti/webfonts/fa-brands-400.eot',
-	'/mauricio-jun-ti/webfonts/fa-brands-400.svg',
-	'/mauricio-jun-ti/webfonts/fa-brands-400.ttf',
-	'/mauricio-jun-ti/webfonts/fa-brands-400.woff',
-	'/mauricio-jun-ti/webfonts/fa-brands-400.woff2',
-	'/mauricio-jun-ti/webfonts/fa-regular-400.eot',
-	'/mauricio-jun-ti/webfonts/fa-regular-400.svg',
-	'/mauricio-jun-ti/webfonts/fa-regular-400.ttf',
-	'/mauricio-jun-ti/webfonts/fa-regular-400.woff',
-	'/mauricio-jun-ti/webfonts/fa-regular-400.woff2',
-	'/mauricio-jun-ti/webfonts/fa-solid-900.eot',
-	'/mauricio-jun-ti/webfonts/fa-solid-900.svg',
-	'/mauricio-jun-ti/webfonts/fa-solid-900.ttf',
-	'/mauricio-jun-ti/webfonts/fa-solid-900.woff',
-	'/mauricio-jun-ti/webfonts/fa-solid-900.woff2',
-	'/mauricio-jun-ti/imgs/logo-mauricio-jun-ti-cartao-digital-puro-v01-01.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-clientes-mobile.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-dicas-mobile.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-logo-horizontal-projetos-web-branco-02-negativo.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-novidades-mobile.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-portfolio-mobile.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-sobre-mobile.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v02.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v03.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v04.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v05.gif',
-	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v08.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v09.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v10.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v13.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-ti-v14.png',
-	'/mauricio-jun-ti/imgs/mauricio-jun-ti-qrcode.png'
-	*/
 	'./',
 	'./index.html',
 	'./offline.html',
@@ -136,7 +92,7 @@ self.addEventListener('fetch', function(event) {
 			return fetch(event.request).then(function(response) {
 				//console.log('response.status = ' + response.status);
 				if (response.status === 404) {
-					return caches.match('/mauricio-jun-ti/404.html');
+					return caches.match('./404.html');
 				}
 				//console.log('response 02 = ' + response);
 				return response
@@ -144,7 +100,7 @@ self.addEventListener('fetch', function(event) {
 		}).catch(function() {
 			// If both fail, show a generic fallback:
 			//console.log('offline event = ' + event);
-			return caches.match('/mauricio-jun-ti/offline.html');
+			return caches.match('./offline.html');
 		})
 	);
 });

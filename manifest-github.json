@@ -3,18 +3,18 @@
   "name": "Mauricio Jun TI - Cartão de Visita Digital Premium",
   "icons": [
     {
-      "src": "https://dcards.github.io/mauricio-jun-ti/favicon/android-chrome-192x192.png",
+      "src": "./favicon/android-chrome-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "https://dcards.github.io/mauricio-jun-ti/favicon/android-chrome-512x512.png",
+      "src": "./favicon/android-chrome-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   /*"start_url": "index.html",*/
-  "start_url": "https://dcards.github.io/mauricio-jun-ti/?utm_source=pwa",
+  "start_url": "./?utm_source=pwa",
   "background_color": "#000",
   "display": "standalone",
   "theme_color": "#000"
